@@ -2,6 +2,7 @@ package tiktok
 
 import (
 	"fmt"
+	"github.com/easycb/easycb-go"
 	"testing"
 	"time"
 )

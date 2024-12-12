@@ -42,7 +42,7 @@ func TestGetProductList(t *testing.T) {
 		"item_status": []string{"NORMAL", "UNLIST"},
 	}
 
-	res, err := client.GetProductList(query)
+	res, err := client.GetItemList(query)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -56,7 +56,7 @@ func TestGetProductBaseInfo(t *testing.T) {
 		"item_id_list": []int64{28204531813, 25233088606},
 	}
 
-	res, err := client.GetProductBaseInfo(query)
+	res, err := client.GetItemBaseInfo(query)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -70,7 +70,7 @@ func TestGetProductItemExtraInfo(t *testing.T) {
 		"item_id_list": []int64{28204531813, 25233088606},
 	}
 
-	res, err := client.GetProductItemExtraInfo(query)
+	res, err := client.GetItemExtraInfo(query)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

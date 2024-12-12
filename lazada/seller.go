@@ -22,9 +22,9 @@ func (c *Client) GetPickUpStoreList(query easycb.AnyMap) (*GetPickUpStoreListRsp
 	return &result, nil
 }
 
-func (c *Client) GetSeller(query easycb.AnyMap) (*GetSellerRsp, error) {
+func (c *Client) GetSeller() (*GetSellerRsp, error) {
 	var result GetSellerRsp
-	err := c.doRequest("GET", "/seller/get", query, nil, &result)
+	err := c.doRequest("GET", "/seller/get", nil, nil, &result)
 	if err != nil {
 		return nil, err
 	}
