@@ -1,4 +1,4 @@
-# Easy Cross Broder (EasyCb-Go)
+# Easy Cross Border (EasyCb-Go)
 
 Lazada/Tiktok/Shopee Seller Open Platform SDK For Golang
 
