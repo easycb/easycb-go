@@ -108,7 +108,7 @@ func (c *Client) doFileRequest(method string, apiPath string, query easycb.AnyMa
 	bodyBuffer := &bytes.Buffer{}
 	writer := multipart.NewWriter(bodyBuffer)
 	for k, v := range body {
-		// 接口检查
+		// Check io.Reader
 		if reader, ok := v.(io.Reader); ok {
 			uuidStr, err1 := easycb.GenerateUuid()
 			if err1 != nil {
