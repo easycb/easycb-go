@@ -10,6 +10,8 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/url"
+	"os"
+	"path/filepath"
 	"reflect"
 	"strconv"
 	"strings"
@@ -92,7 +94,7 @@ func (c *Client) doRequest(method string, apiPath string, query easycb.AnyMap, b
 	return err
 }
 
-func (c *Client) doFileRequest(method string, apiPath string, query easycb.AnyMap, body easycb.AnyMap, fileType string, result interface{}) error {
+func (c *Client) doFileRequest(method string, apiPath string, query easycb.AnyMap, body easycb.AnyMap, result interface{}) error {
 	var err error
 	if c.BaseURL == "" {
 		return easycb.MissBaseUrlErr
@@ -108,15 +110,12 @@ func (c *Client) doFileRequest(method string, apiPath string, query easycb.AnyMa
 	bodyBuffer := &bytes.Buffer{}
 	writer := multipart.NewWriter(bodyBuffer)
 	for k, v := range body {
-		// Check io.Reader
-		if reader, ok := v.(io.Reader); ok {
-			uuidStr, err1 := easycb.GenerateUuid()
-			if err1 != nil {
-				return err1
-			}
-
-			part, _ := writer.CreateFormFile(k, uuidStr+"."+fileType)
-			if _, err := io.Copy(part, reader); err != nil {
+		// Check *os.File
+		if file, ok := v.(*os.File); ok {
+			filePath := file.Name()
+			fileName := filepath.Base(filePath)
+			part, _ := writer.CreateFormFile(k, fileName)
+			if _, err := io.Copy(part, file); err != nil {
 				return err
 			}
 		} else {

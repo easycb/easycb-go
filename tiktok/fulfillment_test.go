@@ -21,7 +21,7 @@ func TestFulfillmentUploadDeliveryFile(t *testing.T) {
 		"name": fmt.Sprintf("%d.pdf", time.Now().Unix()),
 		"data": f,
 	}
-	res, err := client.FulfillmentUploadDeliveryFile(nil, body, "pdf")
+	res, err := client.FulfillmentUploadDeliveryFile(nil, body)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -42,7 +42,7 @@ func TestFulfillmentUploadDeliveryImage(t *testing.T) {
 	body := easycb.AnyMap{
 		"data": f,
 	}
-	res, err := client.FulfillmentUploadDeliveryImage(nil, body, "png")
+	res, err := client.FulfillmentUploadDeliveryImage(nil, body)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

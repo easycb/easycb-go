@@ -52,9 +52,9 @@ func (c *Client) RemoveVideo(body easycb.AnyMap) (*RemoveVideoRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) UploadVideoBlock(body easycb.AnyMap, fileType string) (*UploadVideoBlockRsp, error) {
+func (c *Client) UploadVideoBlock(body easycb.AnyMap) (*UploadVideoBlockRsp, error) {
 	var result UploadVideoBlockRsp
-	err := c.doFileRequest("POST", "/media/video/block/upload", nil, body, fileType, &result)
+	err := c.doFileRequest("POST", "/media/video/block/upload", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

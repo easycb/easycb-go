@@ -72,9 +72,9 @@ func (c *Client) ReturnAcceptOffer(body easycb.AnyMap) (*ReturnAcceptOfferRsp, e
 	return &result, nil
 }
 
-func (c *Client) ConvertImage(body easycb.AnyMap, fileType string) (*ConvertImageRsp, error) {
+func (c *Client) ConvertImage(body easycb.AnyMap) (*ConvertImageRsp, error) {
 	var result ConvertImageRsp
-	err := c.doFileRequest("POST", "/api/v2/returns/convert_image", nil, body, fileType, &result)
+	err := c.doFileRequest("POST", "/api/v2/returns/convert_image", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

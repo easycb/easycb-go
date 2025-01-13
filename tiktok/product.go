@@ -93,10 +93,10 @@ func (c *Client) CheckProductListing(query easycb.AnyMap, body easycb.AnyMap) (*
 	return &result, nil
 }
 
-func (c *Client) UploadProductImage(body easycb.AnyMap, fileType string) (*UploadProductImageRsp, error) {
+func (c *Client) UploadProductImage(body easycb.AnyMap) (*UploadProductImageRsp, error) {
 	var result UploadProductImageRsp
 	path := "/product/202309/images/upload"
-	err := c.doFileRequest("POST", path, nil, body, fileType, &result)
+	err := c.doFileRequest("POST", path, nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -104,10 +104,10 @@ func (c *Client) UploadProductImage(body easycb.AnyMap, fileType string) (*Uploa
 	return &result, nil
 }
 
-func (c *Client) UploadProductFile(body easycb.AnyMap, fileType string) (*UploadProductFileRsp, error) {
+func (c *Client) UploadProductFile(body easycb.AnyMap) (*UploadProductFileRsp, error) {
 	var result UploadProductFileRsp
 	path := "/product/202309/files/upload"
-	err := c.doFileRequest("POST", path, nil, body, fileType, &result)
+	err := c.doFileRequest("POST", path, nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

@@ -20,7 +20,7 @@ func TestUploadImage(t *testing.T) {
 		"image": f,
 	}
 
-	res, err := client.UploadImage(body, "png")
+	res, err := client.UploadImage(body)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

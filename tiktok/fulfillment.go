@@ -203,10 +203,10 @@ func (c *Client) UpdatePackageShippingInfo(packageId string, query easycb.AnyMap
 	return &result, nil
 }
 
-func (c *Client) FulfillmentUploadDeliveryFile(query easycb.AnyMap, body easycb.AnyMap, fileType string) (*FulfillmentUploadDeliveryFileRsp, error) {
+func (c *Client) FulfillmentUploadDeliveryFile(query easycb.AnyMap, body easycb.AnyMap) (*FulfillmentUploadDeliveryFileRsp, error) {
 	var result FulfillmentUploadDeliveryFileRsp
 	path := "/fulfillment/202309/files/upload"
-	err := c.doFileRequest("POST", path, query, body, fileType, &result)
+	err := c.doFileRequest("POST", path, query, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -214,10 +214,10 @@ func (c *Client) FulfillmentUploadDeliveryFile(query easycb.AnyMap, body easycb.
 	return &result, nil
 }
 
-func (c *Client) FulfillmentUploadDeliveryImage(query easycb.AnyMap, body easycb.AnyMap, fileType string) (*FulfillmentUploadDeliveryImageRsp, error) {
+func (c *Client) FulfillmentUploadDeliveryImage(query easycb.AnyMap, body easycb.AnyMap) (*FulfillmentUploadDeliveryImageRsp, error) {
 	var result FulfillmentUploadDeliveryImageRsp
 	path := "/fulfillment/202309/images/upload"
-	err := c.doFileRequest("POST", path, query, body, fileType, &result)
+	err := c.doFileRequest("POST", path, query, body, &result)
 	if err != nil {
 		return nil, err
 	}

@@ -12,9 +12,9 @@ func (c *Client) InitVideoUpload(body easycb.AnyMap) (*InitVideoUploadRsp, error
 	return &result, nil
 }
 
-func (c *Client) UploadVideoPart(body easycb.AnyMap, fileType string) (*UploadVideoPartRsp, error) {
+func (c *Client) UploadVideoPart(body easycb.AnyMap) (*UploadVideoPartRsp, error) {
 	var result UploadVideoPartRsp
-	err := c.doFileRequest("POST", "/api/v2/media_space/upload_video_part", nil, body, fileType, &result)
+	err := c.doFileRequest("POST", "/api/v2/media_space/upload_video_part", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -52,9 +52,9 @@ func (c *Client) CancelVideoUpload(body easycb.AnyMap) (*CancelVideoUploadRsp, e
 	return &result, nil
 }
 
-func (c *Client) UploadImage(body easycb.AnyMap, fileType string) (*UploadImageRsp, error) {
+func (c *Client) UploadImage(body easycb.AnyMap) (*UploadImageRsp, error) {
 	var result UploadImageRsp
-	err := c.doFileRequest("POST", "/api/v2/media_space/upload_image", nil, body, fileType, &result)
+	err := c.doFileRequest("POST", "/api/v2/media_space/upload_image", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

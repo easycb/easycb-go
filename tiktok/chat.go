@@ -38,10 +38,10 @@ func (c *Client) GetConversationMessages(conversationId string, query easycb.Any
 	return &result, nil
 }
 
-func (c *Client) UploadBuyerMessagesImage(body easycb.AnyMap, fileType string) (*UploadBuyerMessagesImageRsp, error) {
+func (c *Client) UploadBuyerMessagesImage(body easycb.AnyMap) (*UploadBuyerMessagesImageRsp, error) {
 	var result UploadBuyerMessagesImageRsp
 	path := "/customer_service/202309/images/upload"
-	err := c.doFileRequest("POST", path, nil, body, fileType, &result)
+	err := c.doFileRequest("POST", path, nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

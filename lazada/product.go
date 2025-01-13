@@ -332,9 +332,9 @@ func (c *Client) UpdateSellableQuantity(body easycb.AnyMap) (*UpdateSellableQuan
 	return &result, nil
 }
 
-func (c *Client) UploadImage(body easycb.AnyMap, fileType string) (*UploadImageRsp, error) {
+func (c *Client) UploadImage(body easycb.AnyMap) (*UploadImageRsp, error) {
 	var result UploadImageRsp
-	err := c.doFileRequest("POST", "/image/upload", nil, body, fileType, &result)
+	err := c.doFileRequest("POST", "/image/upload", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

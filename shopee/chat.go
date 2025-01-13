@@ -114,9 +114,9 @@ func (c *Client) UnpinConversation(body easycb.AnyMap) (*UnpinConversationRsp, e
 	return &result, nil
 }
 
-func (c *Client) SellerChatUploadImage(body easycb.AnyMap, fileType string) (*SellerChatUploadImageRsp, error) {
+func (c *Client) SellerChatUploadImage(body easycb.AnyMap) (*SellerChatUploadImageRsp, error) {
 	var result SellerChatUploadImageRsp
-	err := c.doFileRequest("POST", "/api/v2/media_space/upload_image", nil, body, fileType, &result)
+	err := c.doFileRequest("POST", "/api/v2/media_space/upload_image", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
