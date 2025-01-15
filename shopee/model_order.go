@@ -205,3 +205,60 @@ type GetBuyerInvoiceInfoRsp struct {
 		Error       string `json:"error"`
 	} `json:"invoice_info_list"`
 }
+
+type GetBookingListRsp struct {
+	BaseRsp
+	Response struct {
+		More        bool `json:"more"`
+		BookingList []struct {
+			BookingSn     string `json:"booking_sn"`
+			OrderSn       string `json:"order_sn"`
+			BookingStatus string `json:"booking_status"`
+			NextCursor    string `json:"next_cursor"`
+		} `json:"booking_list"`
+	} `json:"response"`
+}
+
+type GetBookingDetailRsp struct {
+	BaseRsp
+	Response struct {
+		BookingList []struct {
+			BookingSn        string `json:"booking_sn"`
+			OrderSn          string `json:"order_sn"`
+			Region           string `json:"region"`
+			BookingStatus    string `json:"booking_status"`
+			MatchStatus      string `json:"match_status"`
+			ShippingCarrier  string `json:"shipping_carrier"`
+			CreateTime       int64  `json:"create_time"`
+			UpdateTime       int64  `json:"update_time"`
+			RecipientAddress struct {
+				Name        string `json:"name"`
+				Phone       string `json:"phone"`
+				Town        string `json:"town"`
+				District    string `json:"district"`
+				City        string `json:"city"`
+				State       string `json:"state"`
+				Region      string `json:"region"`
+				Zipcode     string `json:"zipcode"`
+				FullAddress string `json:"full_address"`
+			} `json:"recipient_address"`
+			ItemList []struct {
+				ItemName          string  `json:"item_name"`
+				ItemSku           string  `json:"item_sku"`
+				ModelName         string  `json:"model_name"`
+				ModelSku          string  `json:"model_sku"`
+				Weight            float64 `json:"weight"`
+				ProductLocationId string  `json:"product_location_id"`
+				ImageInfo         struct {
+					ImageUrl string `json:"image_url"`
+				} `json:"image_info"`
+			} `json:"item_list"`
+			Dropshipper      string `json:"dropshipper"`
+			DropshipperPhone string `json:"dropshipper_phone"`
+			CancelBy         string `json:"cancel_by"`
+			CancelReason     string `json:"cancel_reason"`
+			FulfillmentFlag  string `json:"fulfillment_flag"`
+			PickupDoneTime   int64  `json:"pickup_done_time"`
+		} `json:"booking_list"`
+	} `json:"response"`
+}

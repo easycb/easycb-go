@@ -67,7 +67,6 @@ func (c *Client) doRequest(method string, apiPath string, query easycb.AnyMap, b
 		val := reflect.ValueOf(result)
 		if val.Kind() == reflect.Ptr {
 			val = val.Elem()
-			fmt.Println("0000")
 			if val.Kind() == reflect.Struct {
 				for i := 0; i < val.NumField(); i++ {
 					field := val.Type().Field(i)

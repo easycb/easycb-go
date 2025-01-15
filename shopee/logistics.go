@@ -171,3 +171,93 @@ func (c *Client) UpdateTrackingStatus(body easycb.AnyMap) (*UpdateTrackingStatus
 
 	return &result, nil
 }
+
+func (c *Client) GetBookingShippingParameter(query easycb.AnyMap) (*GetBookingShippingParameterRsp, error) {
+	var result GetBookingShippingParameterRsp
+	err := c.doRequest("GET", "/api/v2/logistics/get_booking_shipping_parameter", query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) ShipBooking(body easycb.AnyMap) (*ShipBookingRsp, error) {
+	var result ShipBookingRsp
+	err := c.doRequest("POST", "/api/v2/logistics/ship_booking", nil, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetBookingTrackingNumber(query easycb.AnyMap) (*GetBookingTrackingNumberRsp, error) {
+	var result GetBookingTrackingNumberRsp
+	err := c.doRequest("GET", "/api/v2/logistics/get_booking_tracking_number", query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetBookingShippingDocumentParameter(body easycb.AnyMap) (*GetBookingShippingDocumentParameterRsp, error) {
+	var result GetBookingShippingDocumentParameterRsp
+	err := c.doRequest("POST", "/api/v2/logistics/get_booking_shipping_document_parameter", nil, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) CreateBookingShippingDocument(body easycb.AnyMap) (*CreateBookingShippingDocumentRsp, error) {
+	var result CreateBookingShippingDocumentRsp
+	err := c.doRequest("POST", "/api/v2/logistics/create_booking_shipping_document", nil, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetBookingShippingDocumentResult(body easycb.AnyMap) (*GetBookingShippingDocumentResultRsp, error) {
+	var result GetBookingShippingDocumentResultRsp
+	err := c.doRequest("POST", "/api/v2/logistics/get_booking_shipping_document_result", nil, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) DownloadBookingShippingDocument(body easycb.AnyMap) (*DownloadBookingShippingDocumentRsp, error) {
+	var result DownloadBookingShippingDocumentRsp
+	err := c.doRequest("POST", "/api/v2/logistics/download_booking_shipping_document", nil, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetBookingShippingDocumentDataInfo(body easycb.AnyMap) (*GetBookingShippingDocumentDataInfoRsp, error) {
+	var result GetBookingShippingDocumentDataInfoRsp
+	err := c.doRequest("POST", "/api/v2/logistics/get_booking_shipping_document_data_info", nil, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetBookingTrackingInfo(query easycb.AnyMap) (*GetBookingTrackingInfoRsp, error) {
+	var result GetBookingTrackingInfoRsp
+	err := c.doRequest("GET", "/api/v2/logistics/get_booking_tracking_info", query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

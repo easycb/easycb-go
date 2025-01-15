@@ -5,20 +5,10 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
-	"github.com/google/uuid"
 	"strconv"
 	"strings"
 	"time"
 )
-
-func GenerateUuid() (string, error) {
-	u, err := uuid.NewRandom()
-	if err != nil {
-		return "", err
-	}
-
-	return u.String(), nil
-}
 
 func GenerateSHA256(input []byte, secret []byte) string {
 	h := hmac.New(sha256.New, secret)

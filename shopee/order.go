@@ -123,3 +123,23 @@ func (c *Client) GetBuyerInvoiceInfo(query easycb.AnyMap) (*GetBuyerInvoiceInfoR
 
 	return &result, nil
 }
+
+func (c *Client) GetBookingList(query easycb.AnyMap) (*GetBookingListRsp, error) {
+	var result GetBookingListRsp
+	err := c.doRequest("GET", "/api/v2/order/get_booking_list", query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetBookingDetailRsp(query easycb.AnyMap) (*GetBookingDetailRsp, error) {
+	var result GetBookingDetailRsp
+	err := c.doRequest("GET", "/api/v2/order/get_booking_detail", query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

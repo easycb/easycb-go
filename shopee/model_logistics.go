@@ -295,3 +295,149 @@ type UpdateTrackingStatusRsp struct {
 		UpdateResult string `json:"update_result"`
 	} `json:"response"`
 }
+
+type GetBookingShippingParameterRsp struct {
+	BaseRsp
+	Response struct {
+		InfoNeeded struct {
+			Dropoff []interface{} `json:"dropoff"`
+			Pickup  []string      `json:"pickup"`
+		} `json:"info_needed"`
+		Pickup struct {
+			AddressList []struct {
+				AddressId    int64    `json:"address_id"`
+				Region       string   `json:"region"`
+				State        string   `json:"state"`
+				City         string   `json:"city"`
+				District     string   `json:"district"`
+				Town         string   `json:"town"`
+				Address      string   `json:"address"`
+				Zipcode      string   `json:"zipcode"`
+				AddressFlag  []string `json:"address_flag"`
+				TimeSlotList []struct {
+					Date         int64  `json:"date"`
+					TimeText     string `json:"time_text"`
+					PickupTimeId string `json:"pickup_time_id"`
+					Error        string `json:"error"`
+					Msg          string `json:"msg"`
+				} `json:"time_slot_list"`
+			} `json:"address_list"`
+		} `json:"pickup"`
+	} `json:"response"`
+}
+
+type ShipBookingRsp struct {
+	BaseRsp
+}
+
+type GetBookingTrackingNumberRsp struct {
+	BaseRsp
+	TrackingNumber string `json:"tracking_number"`
+}
+
+type GetBookingShippingDocumentParameterRsp struct {
+	BaseRsp
+	Warning []struct {
+		BookingSn string `json:"booking_sn"`
+	} `json:"warning"`
+	Response struct {
+		ResultList []struct {
+			BookingSn                      string   `json:"booking_sn"`
+			SuggestShippingDocumentType    string   `json:"suggest_shipping_document_type"`
+			SelectableShippingDocumentType []string `json:"selectable_shipping_document_type"`
+			FailError                      string   `json:"fail_error"`
+			FailMessage                    string   `json:"fail_message"`
+		} `json:"result_list"`
+	} `json:"response"`
+}
+
+type CreateBookingShippingDocumentRsp struct {
+	BaseRsp
+	Warning []struct {
+		BookingSn string `json:"booking_sn"`
+	} `json:"warning"`
+	Response struct {
+		ResultList []struct {
+			BookingSn   string `json:"booking_sn"`
+			FailError   string `json:"fail_error"`
+			FailMessage string `json:"fail_message"`
+		} `json:"result_list"`
+	} `json:"response"`
+}
+
+type GetBookingShippingDocumentResultRsp struct {
+	BaseRsp
+	Warning []struct {
+		BookingSn string `json:"booking_sn"`
+	} `json:"warning"`
+	Response struct {
+		ResultList []struct {
+			BookingSn   string `json:"booking_sn"`
+			Status      string `json:"status"`
+			FailError   string `json:"fail_error"`
+			FailMessage string `json:"fail_message"`
+		} `json:"result_list"`
+	} `json:"response"`
+}
+
+type DownloadBookingShippingDocumentRsp struct {
+	BaseRsp
+	RawBytes []byte `json:"raw_bytes"`
+}
+
+type GetBookingShippingDocumentDataInfoRsp struct {
+	BaseRsp
+	Response struct {
+		RecipientAddressInfo struct {
+			Key   string `json:"key"`
+			Image string `json:"image"`
+		} `json:"recipient_address_info"`
+		ShippingDocumentInfo struct {
+			BookingWeight      int64  `json:"booking_weight"`
+			LogisticsChannelId int64  `json:"logistics_channel_id"`
+			ShippingCarrier    string `json:"shipping_carrier"`
+			RecipientSortCode  struct {
+				FirstRecipientSortCode  string `json:"first_recipient_sort_code"`
+				SecondRecipientSortCode string `json:"second_recipient_sort_code"`
+				ThirdRecipientSortCode  string `json:"third_recipient_sort_code"`
+			} `json:"recipient_sort_code"`
+			SenderSortCode struct {
+				FirstSenderSortCode  string `json:"first_sender_sort_code"`
+				SecondSenderSortCode string `json:"second_sender_sort_code"`
+				ThirdSenderSortCode  string `json:"third_sender_sort_code"`
+			} `json:"sender_sort_code"`
+			ReturnSortCode struct {
+				ReturnFirstSortCode string `json:"return_first_sort_code"`
+			} `json:"return_sort_code"`
+			TrackingNumber       string `json:"tracking_number"`
+			PickupHub            string `json:"pickup_hub"`
+			DeliveryHub          string `json:"delivery_hub"`
+			DeliverArea          string `json:"deliver_area"`
+			EcBookingNo          string `json:"ec_booking_no"`
+			CreateDateYmdSl      string `json:"create_date_ymd_sl"`
+			ManufacturersName    string `json:"manufacturers_name"`
+			ManufacturersWebsite string `json:"manufacturers_website"`
+			IsLmDgBool           int    `json:"is_lm_dg_bool"`
+			SpxSubDistrict       string `json:"spx_sub_district"`
+			SpxReceiveStation    struct {
+				SpxFirstReceiveStation string `json:"spx_first_receive_station"`
+			} `json:"spx_receive_station"`
+			Zone                string `json:"zone"`
+			ZoneCode            string `json:"zone_code"`
+			DestinationBaseCode string `json:"destination_base_code"`
+		} `json:"shipping_document_info"`
+	} `json:"response"`
+}
+
+type GetBookingTrackingInfoRsp struct {
+	BaseRsp
+	Response struct {
+		BookingSn       string `json:"booking_sn"`
+		LogisticsStatus string `json:"logistics_status"`
+		TrackingInfo    []struct {
+			UpdateTime      int64  `json:"update_time"`
+			Description     string `json:"description"`
+			LogisticsStatus string `json:"logistics_status"`
+		} `json:"tracking_info"`
+	} `json:"response"`
+}
