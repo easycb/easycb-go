@@ -510,3 +510,14 @@ func (c *Client) ListingSchemas(query easycb.AnyMap) (*ListingSchemasRsp, error)
 
 	return &result, nil
 }
+
+func (c *Client) DiagnoseAndOptimizeProduct(query easycb.AnyMap, body easycb.AnyMap) (*DiagnoseAndOptimizeProductRsp, error) {
+	var result DiagnoseAndOptimizeProductRsp
+	path := "/product/202411/products/diagnose_optimize"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

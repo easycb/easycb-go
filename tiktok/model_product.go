@@ -987,3 +987,37 @@ type ListingSchemasRsp struct {
 		} `json:"listing_schemas"`
 	} `json:"data"`
 }
+
+type DiagnoseAndOptimizeProductRsp struct {
+	BaseRsp
+	Data struct {
+		Diagnoses []struct {
+			DiagnosisResults []struct {
+				Code        string `json:"code"`
+				HowToSolve  string `json:"how_to_solve"`
+				QualityTier string `json:"quality_tier"`
+			} `json:"diagnosis_results"`
+			Field      string `json:"field"`
+			Suggestion struct {
+				Images []struct {
+					Height       int    `json:"height"`
+					OptimizedUri string `json:"optimized_uri"`
+					OptimizedUrl string `json:"optimized_url"`
+					Uri          string `json:"uri"`
+					Url          string `json:"url"`
+					Width        int    `json:"width"`
+				} `json:"images"`
+				SeoWords []struct {
+					Text string `json:"text"`
+				} `json:"seo_words"`
+				SmartTexts []struct {
+					Text string `json:"text"`
+				} `json:"smart_texts"`
+			} `json:"suggestion"`
+		} `json:"diagnoses"`
+		ListingQuality struct {
+			CurrentTier              string `json:"current_tier"`
+			RemainingRecommendations int    `json:"remaining_recommendations"`
+		} `json:"listing_quality"`
+	} `json:"data"`
+}
