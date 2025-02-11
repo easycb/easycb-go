@@ -246,3 +246,69 @@ func (c *Client) CreateOpenCollaboration(query easycb.AnyMap, body easycb.AnyMap
 
 	return &result, nil
 }
+
+func (c *Client) GetMessageInTheConversation(conversationId string, query easycb.AnyMap) (*GetMessageInTheConversationRsp, error) {
+	var result GetMessageInTheConversationRsp
+	path := fmt.Sprintf("/affiliate_seller/202412/conversation/%s/messages", conversationId)
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, err
+}
+
+func (c *Client) GetConversationList(query easycb.AnyMap, body easycb.AnyMap) (*GetConversationListRsp, error) {
+	var result GetConversationListRsp
+	path := "/affiliate_seller/202412/conversations"
+	err := c.doRequest("GET", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, err
+}
+
+func (c *Client) SendIMMessage(conversationId string, query easycb.AnyMap, body easycb.AnyMap) (*SendIMMessageRsp, error) {
+	var result SendIMMessageRsp
+	path := fmt.Sprintf("/affiliate_seller/202412/conversations/%s/messages", conversationId)
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, err
+}
+
+func (c *Client) CreateConversationWithCreator(query easycb.AnyMap, body easycb.AnyMap) (*CreateConversationWithCreatorRsp, error) {
+	var result CreateConversationWithCreatorRsp
+	path := "/affiliate_seller/202412/conversations"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, err
+}
+
+func (c *Client) MarkConversationRead(query easycb.AnyMap, body easycb.AnyMap) (*MarkConversationReadRsp, error) {
+	var result MarkConversationReadRsp
+	path := "/affiliate_seller/202412/conversatons/read"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, err
+}
+
+func (c *Client) GetLatestUnreadMessages(query easycb.AnyMap) (*GetLatestUnreadMessagesRsp, error) {
+	var result GetLatestUnreadMessagesRsp
+	path := "/affiliate_seller/202412/conversations/messages/list/newest"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, err
+}

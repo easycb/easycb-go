@@ -580,3 +580,76 @@ type CreateOpenCollaborationRsp struct {
 		} `json:"open_collaboration"`
 	} `json:"data"`
 }
+
+type GetMessageInTheConversationRsp struct {
+	BaseRsp
+	Data struct {
+		HasMore  bool `json:"has_more"`
+		Messages []struct {
+			ConversationIndex string `json:"conversation_index"`
+			MessageBody       struct {
+				Content        string `json:"content"`
+				ConversationId string `json:"conversation_id"`
+				CreateTime     int64  `json:"create_time"`
+				Id             string `json:"id"`
+				SenderId       string `json:"sender_id"`
+				Type           string `json:"type"`
+			} `json:"message_body"`
+		} `json:"messages"`
+		NextPageToken string `json:"next_page_token"`
+	} `json:"data"`
+}
+
+type GetConversationListRsp struct {
+	BaseRsp
+	Data struct {
+		Conversations []struct {
+			Avatar      string `json:"avatar"`
+			CreatorImId string `json:"creator_im_id"`
+			Id          string `json:"id"`
+			UnreadCount int    `json:"unread_count"`
+			Username    string `json:"username"`
+		} `json:"conversations"`
+		HasMore       bool   `json:"has_more"`
+		NextPageToken string `json:"next_page_token"`
+	} `json:"data"`
+}
+
+type SendIMMessageRsp struct {
+	BaseRsp
+	Data struct {
+		MessageId string `json:"message_id"`
+	} `json:"data"`
+}
+
+type CreateConversationWithCreatorRsp struct {
+	BaseRsp
+	Data struct {
+		Avatar         string `json:"avatar"`
+		ConversationId string `json:"conversation_id"`
+		CreatorImId    string `json:"creator_im_id"`
+		IsNew          bool   `json:"is_new"`
+		UnreadCount    int    `json:"unread_count"`
+		Username       string `json:"username"`
+	} `json:"data"`
+}
+
+type MarkConversationReadRsp struct {
+	BaseRsp
+	Data struct {
+		FailedConversationIds []string `json:"failed_conversation_ids"`
+	} `json:"data"`
+}
+
+type GetLatestUnreadMessagesRsp struct {
+	BaseRsp
+	Data struct {
+		NewestMessageList []struct {
+			Content            string `json:"content"`
+			ConversationId     string `json:"conversation_id"`
+			SenderId           string `json:"sender_id"`
+			Type               string `json:"type"`
+			UnreadMessageCount int    `json:"unread_message_count"`
+		} `json:"newest_message_list"`
+	} `json:"data"`
+}
