@@ -1,46 +1,46 @@
-English | [简体中文](./README_CN.md)
+[English](./README.md) | 简体中文
 
 # Easy Cross Border (EasyCb-Go)
 
-Lazada/Tiktok/Shopee Seller Open Platform SDK For Golang
+Lazada/TikTok/Shopee卖家开放平台Golang SDK
 
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/easycb/easycb-go)
 
-## Overview
+## 概述
 
-* Support [Lazada Open Api](https://open.lazada.com/apps/doc/api) 
-* Support [Tiktok Shope Partner Api](https://partner.tiktokshop.com/api/document) `V2`
-* Support [Shopee Open Api](https://open.shopee.com/documents) `V2`
-* Every feature comes with tests
-* Developer Friendly
+* 支持 [Lazada 卖家开放平台](https://open.lazada.com/apps/doc/api)
+* 支持 [Tiktok 合作伙伴](https://partner.tiktokshop.com/api/document) `V2`
+* 支持 [Shopee 卖家开放平台](https://open.shopee.com/documents) `V2`
+* 每个功能都附带测试
+* 对开发者友好
 
-**EasyCb features are support platform:**
+**EasyCb 未来将支持以下平台:**
 - Shopify
 - Amazon
 - AliExpress
 - ...
 
-## Getting Started
+## 开始使用
 
-### Prerequisites
+### 准备工作
 
-EasyCb requires [Go](https://go.dev/) version [1.17](https://go.dev/doc/devel/release#go1.17.0) or above.
+EasyCb 需要 [Go](https://go.dev/) 版本>= [1.17](https://go.dev/doc/devel/release#go1.17.0) 及更高版本
 
 ```sh
 import "github.com/easycb/easycb-go"
 ```
 
-Alternatively, use `go get`:
+或者使用 `go get`:
 
 ```sh
 go get -u github.com/easycb/easycb-go
 ```
 
-### Running EasyCb
+### 运行 EasyCb
 
 
-A basic example Lazada open api:
+Lazada 基础使用示例:
 ```go
 package main
 
@@ -83,7 +83,7 @@ func main() {
 ```
 
 
-A basic example Shopee open api:
+Shopee 基础使用示例:
 ```go
 package main
 
@@ -124,8 +124,7 @@ func main() {
 ```
 
 
-A basic example Tiktok shop partner api:
-
+Tiktok 基础使用示例:
 ```go
 package main
 
@@ -169,10 +168,10 @@ func main() {
 ```
 
 
-## Contributors
+## 贡献者
 
-[Thank you](https://github.com/easycb/easycb-go/graphs/contributors) for contributing to the EasyCb SDK!
+[感谢](https://github.com/easycb/easycb-go/graphs/contributors) 对EasyCb贡献!
 
-## License
+## 许可
 
-Released under the [MIT License](https://github.com/easycb/easycb-go/blob/master/LICENSE)
+协议 [MIT License](https://github.com/easycb/easycb-go/blob/master/LICENSE)
