@@ -907,6 +907,28 @@ type SearchManufacturersRsp struct {
 	} `json:"data"`
 }
 
+type SearchManufacturersRspV202501 struct {
+	BaseRsp
+	Data struct {
+		Manufacturers []struct {
+			Id               string `json:"id"`
+			RegionalProfiles []struct {
+				Address     string `json:"address"`
+				Email       string `json:"email"`
+				Locale      string `json:"locale"`
+				Name        string `json:"name"`
+				PhoneNumber struct {
+					CountryCode string `json:"country_code"`
+					LocalNumber string `json:"local_number"`
+				} `json:"phone_number"`
+				RegisteredTradeName string `json:"registered_trade_name"`
+			} `json:"regional_profiles"`
+		} `json:"manufacturers"`
+		NextPageToken string `json:"next_page_token"`
+		TotalCount    int    `json:"total_count"`
+	} `json:"data"`
+}
+
 type CreateResponsiblePersonRsp struct {
 	BaseRsp
 	Data struct {
@@ -939,6 +961,35 @@ type SearchResponsiblePersonsRsp struct {
 				CountryCode string `json:"country_code"`
 				LocalNumber string `json:"local_number"`
 			} `json:"phone_number"`
+		} `json:"responsible_persons"`
+		TotalCount int `json:"total_count"`
+	} `json:"data"`
+}
+
+type SearchResponsiblePersonsV202501Rsp struct {
+	BaseRsp
+	Data struct {
+		NextPageToken      string `json:"next_page_token"`
+		ResponsiblePersons []struct {
+			Id               string `json:"id"`
+			RegionalProfiles []struct {
+				Address struct {
+					City               string `json:"city"`
+					Country            string `json:"country"`
+					District           string `json:"district"`
+					PostalCode         string `json:"postal_code"`
+					Province           string `json:"province"`
+					StreetAddressLine1 string `json:"street_address_line1"`
+					StreetAddressLine2 string `json:"street_address_line2"`
+				} `json:"address"`
+				Email       string `json:"email"`
+				Locale      string `json:"locale"`
+				Name        string `json:"name"`
+				PhoneNumber struct {
+					CountryCode string `json:"country_code"`
+					LocalNumber string `json:"local_number"`
+				} `json:"phone_number"`
+			} `json:"regional_profiles"`
 		} `json:"responsible_persons"`
 		TotalCount int `json:"total_count"`
 	} `json:"data"`

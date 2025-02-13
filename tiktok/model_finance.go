@@ -96,6 +96,114 @@ type GetStatementTransactionsRsp struct {
 	} `json:"data"`
 }
 
+type GetStatementTransactionsV202501Rsp struct {
+	BaseRsp
+	Data struct {
+		CreateTime               int64  `json:"create_time"`
+		Currency                 string `json:"currency"`
+		Id                       string `json:"id"`
+		NextPageToken            string `json:"next_page_token"`
+		PayableAmount            string `json:"payable_amount"`
+		Status                   string `json:"status"`
+		TotalCount               int    `json:"total_count"`
+		TotalReserveAmount       string `json:"total_reserve_amount"`
+		TotalSettlementAmount    string `json:"total_settlement_amount"`
+		TotalSettlementBreakdown struct {
+			TotalAdjustmentAmount   string `json:"total_adjustment_amount"`
+			TotalFeeTaxAmount       string `json:"total_fee_tax_amount"`
+			TotalRevenueAmount      string `json:"total_revenue_amount"`
+			TotalShippingCostAmount string `json:"total_shipping_cost_amount"`
+		} `json:"total_settlement_breakdown"`
+		Transactions []struct {
+			AdjustmentAmount     string `json:"adjustment_amount"`
+			AdjustmentId         string `json:"adjustment_id"`
+			AdjustmentOrderId    string `json:"adjustment_order_id"`
+			AssociatedOrderId    string `json:"associated_order_id"`
+			EstimatedReleaseTime string `json:"estimated_release_time"`
+			FeeTaxAmount         string `json:"fee_tax_amount"`
+			FeeTaxBreakdown      struct {
+				Fee struct {
+					AffiliateAdsCommissionAmount       string `json:"affiliate_ads_commission_amount"`
+					AffiliateCommissionAmount          string `json:"affiliate_commission_amount"`
+					AffiliateCommissionAmountBeforePit string `json:"affiliate_commission_amount_before_pit"`
+					AffiliatePartnerCommissionAmount   string `json:"affiliate_partner_commission_amount"`
+					BonusCashbackServiceFeeAmount      string `json:"bonus_cashback_service_fee_amount"`
+					CreditCardHandlingFeeAmount        string `json:"credit_card_handling_fee_amount"`
+					LiveSpecialsFeeAmount              string `json:"live_specials_fee_amount"`
+					MallServiceFeeAmount               string `json:"mall_service_fee_amount"`
+					PlatformCommissionAmount           string `json:"platform_commission_amount"`
+					ReferralFeeAmount                  string `json:"referral_fee_amount"`
+					RefundAdministrationFeeAmount      string `json:"refund_administration_fee_amount"`
+					SfpServiceFeeAmount                string `json:"sfp_service_fee_amount"`
+					TransactionFeeAmount               string `json:"transaction_fee_amount"`
+				} `json:"fee"`
+				Tax struct {
+					CustomsClearanceAmount string `json:"customs_clearance_amount"`
+					CustomsDutyAmount      string `json:"customs_duty_amount"`
+					GstAmount              string `json:"gst_amount"`
+					ImportVatAmount        string `json:"import_vat_amount"`
+					SstAmount              string `json:"sst_amount"`
+					VatAmount              string `json:"vat_amount"`
+				} `json:"tax"`
+			} `json:"fee_tax_breakdown"`
+			Id               string `json:"id"`
+			OrderCreateTime  int64  `json:"order_create_time"`
+			OrderId          string `json:"order_id"`
+			ReserveAmount    string `json:"reserve_amount"`
+			ReserveId        string `json:"reserve_id"`
+			ReserveStatus    string `json:"reserve_status"`
+			RevenueAmount    string `json:"revenue_amount"`
+			RevenueBreakdown struct {
+				CodServiceFeeAmount                string `json:"cod_service_fee_amount"`
+				RefundCodServiceFeeAmount          string `json:"refund_cod_service_fee_amount"`
+				RefundSubtotalBeforeDiscountAmount string `json:"refund_subtotal_before_discount_amount"`
+				SellerDiscountAmount               string `json:"seller_discount_amount"`
+				SellerDiscountRefundAmount         string `json:"seller_discount_refund_amount"`
+				SubtotalBeforeDiscountAmount       string `json:"subtotal_before_discount_amount"`
+			} `json:"revenue_breakdown"`
+			SettlementAmount      string `json:"settlement_amount"`
+			ShippingCostAmount    string `json:"shipping_cost_amount"`
+			ShippingCostBreakdown struct {
+				ActualShippingFeeAmount        string `json:"actual_shipping_fee_amount"`
+				CustomerPaidShippingFeeAmount  string `json:"customer_paid_shipping_fee_amount"`
+				ExchangeShippingFeeAmount      string `json:"exchange_shipping_fee_amount"`
+				ReplacementShippingFeeAmount   string `json:"replacement_shipping_fee_amount"`
+				ReturnShippingFeeAmount        string `json:"return_shipping_fee_amount"`
+				ShippingFeeDiscountAmount      string `json:"shipping_fee_discount_amount"`
+				ShippingInsuranceFeeAmount     string `json:"shipping_insurance_fee_amount"`
+				SignatureConfirmationFeeAmount string `json:"signature_confirmation_fee_amount"`
+				SupplementaryComponent         struct {
+					CustomerShippingFeeOffsetAmount   string `json:"customer_shipping_fee_offset_amount"`
+					FbmShippingCostAmount             string `json:"fbm_shipping_cost_amount"`
+					FbtFulfillmentFeeAmount           string `json:"fbt_fulfillment_fee_amount"`
+					FbtShippingCostAmount             string `json:"fbt_shipping_cost_amount"`
+					PlatformShippingFeeDiscountAmount string `json:"platform_shipping_fee_discount_amount"`
+					PromoShippingIncentiveAmount      string `json:"promo_shipping_incentive_amount"`
+					SellerShippingFeeDiscountAmount   string `json:"seller_shipping_fee_discount_amount"`
+					ShippingFeeSubsidyAmount          string `json:"shipping_fee_subsidy_amount"`
+				} `json:"supplementary_component"`
+			} `json:"shipping_cost_breakdown"`
+			SupplementaryComponent struct {
+				CustomerPaymentAmount                string `json:"customer_payment_amount"`
+				CustomerRefundAmount                 string `json:"customer_refund_amount"`
+				PlatformCofundedDiscountAmount       string `json:"platform_cofunded_discount_amount"`
+				PlatformCofundedDiscountRefundAmount string `json:"platform_cofunded_discount_refund_amount"`
+				PlatformDiscountAmount               string `json:"platform_discount_amount"`
+				PlatformDiscountRefundAmount         string `json:"platform_discount_refund_amount"`
+				RetailDeliveryFeeAmount              string `json:"retail_delivery_fee_amount"`
+				RetailDeliveryFeePaymentAmount       string `json:"retail_delivery_fee_payment_amount"`
+				RetailDeliveryFeeRefundAmount        string `json:"retail_delivery_fee_refund_amount"`
+				SalesTaxAmount                       string `json:"sales_tax_amount"`
+				SalesTaxPaymentAmount                string `json:"sales_tax_payment_amount"`
+				SalesTaxRefundAmount                 string `json:"sales_tax_refund_amount"`
+				SellerCofundedDiscountAmount         string `json:"seller_cofunded_discount_amount"`
+				SellerCofundedDiscountRefundAmount   string `json:"seller_cofunded_discount_refund_amount"`
+			} `json:"supplementary_component"`
+			Type string `json:"type"`
+		} `json:"transactions"`
+	} `json:"data"`
+}
+
 type GetOrderStatementTransactionsRsp struct {
 	BaseRsp
 	Data struct {
@@ -215,6 +323,83 @@ type GetOrderStatementTransactionsRsp struct {
 			Status               string `json:"status"`
 			TransactionFeeAmount string `json:"transaction_fee_amount"`
 		} `json:"statement_transactions"`
+	} `json:"data"`
+}
+
+type GetOrderStatementTransactionsV202501Rsp struct {
+	BaseRsp
+	Data struct {
+		Currency           string `json:"currency"`
+		FeeAndTaxAmount    string `json:"fee_and_tax_amount"`
+		OrderCreateTime    int64  `json:"order_create_time"`
+		OrderId            string `json:"order_id"`
+		RevenueAmount      string `json:"revenue_amount"`
+		SettlementAmount   string `json:"settlement_amount"`
+		ShippingCostAmount string `json:"shipping_cost_amount"`
+		SkuTransactions    []struct {
+			FeeTaxAmount    string `json:"fee_tax_amount"`
+			FeeTaxBreakdown struct {
+				Fee struct {
+					AffiliateAdsCommissionAmount       string `json:"affiliate_ads_commission_amount"`
+					AffiliateCommissionAmount          string `json:"affiliate_commission_amount"`
+					AffiliateCommissionAmountBeforePit string `json:"affiliate_commission_amount_before_pit"`
+					AffiliatePartnerCommissionAmount   string `json:"affiliate_partner_commission_amount"`
+					BonusCashbackServiceFeeAmount      string `json:"bonus_cashback_service_fee_amount"`
+					CreditCardHandlingFeeAmount        string `json:"credit_card_handling_fee_amount"`
+					LiveSpecialsFeeAmount              string `json:"live_specials_fee_amount"`
+					MallServiceFeeAmount               string `json:"mall_service_fee_amount"`
+					PlatformCommissionAmount           string `json:"platform_commission_amount"`
+					ReferralFeeAmount                  string `json:"referral_fee_amount"`
+					RefundAdministrationFeeAmount      string `json:"refund_administration_fee_amount"`
+					SfpServiceFeeAmount                string `json:"sfp_service_fee_amount"`
+					TransactionFeeAmount               string `json:"transaction_fee_amount"`
+				} `json:"fee"`
+				Tax struct {
+					CustomsClearanceAmount string `json:"customs_clearance_amount"`
+					CustomsDutyAmount      string `json:"customs_duty_amount"`
+					GstAmount              string `json:"gst_amount"`
+					ImportVatAmount        string `json:"import_vat_amount"`
+					SstAmount              string `json:"sst_amount"`
+					VatAmount              string `json:"vat_amount"`
+				} `json:"tax"`
+			} `json:"fee_tax_breakdown"`
+			ProductName      string `json:"product_name"`
+			Quantity         string `json:"quantity"`
+			RevenueAmount    string `json:"revenue_amount"`
+			RevenueBreakdown struct {
+				CodServiceFeeAmount                string `json:"cod_service_fee_amount"`
+				RefundCodServiceFeeAmount          string `json:"refund_cod_service_fee_amount"`
+				RefundSubtotalBeforeDiscountAmount string `json:"refund_subtotal_before_discount_amount"`
+				SellerDiscountAmount               string `json:"seller_discount_amount"`
+				SellerDiscountRefundAmount         string `json:"seller_discount_refund_amount"`
+				SubtotalBeforeDiscountAmount       string `json:"subtotal_before_discount_amount"`
+			} `json:"revenue_breakdown"`
+			SettlementAmount      string `json:"settlement_amount"`
+			ShippingCostAmount    string `json:"shipping_cost_amount"`
+			ShippingCostBreakdown struct {
+				ActualShippingFeeAmount        string `json:"actual_shipping_fee_amount"`
+				CustomerPaidShippingFeeAmount  string `json:"customer_paid_shipping_fee_amount"`
+				ExchangeShippingFeeAmount      string `json:"exchange_shipping_fee_amount"`
+				ReplacementShippingFeeAmount   string `json:"replacement_shipping_fee_amount"`
+				ReturnShippingFeeAmount        string `json:"return_shipping_fee_amount"`
+				ShippingFeeDiscountAmount      string `json:"shipping_fee_discount_amount"`
+				ShippingInsuranceFeeAmount     string `json:"shipping_insurance_fee_amount"`
+				SignatureConfirmationFeeAmount string `json:"signature_confirmation_fee_amount"`
+				SupplementaryComponent         struct {
+					CustomerShippingFeeOffsetAmount   string `json:"customer_shipping_fee_offset_amount"`
+					FbmShippingCostAmount             string `json:"fbm_shipping_cost_amount"`
+					FbtFulfillmentFeeAmount           string `json:"fbt_fulfillment_fee_amount"`
+					FbtShippingCostAmount             string `json:"fbt_shipping_cost_amount"`
+					PlatformShippingFeeDiscountAmount string `json:"platform_shipping_fee_discount_amount"`
+					PromoShippingIncentiveAmount      string `json:"promo_shipping_incentive_amount"`
+					SellerShippingFeeDiscountAmount   string `json:"seller_shipping_fee_discount_amount"`
+					ShippingFeeSubsidyAmount          string `json:"shipping_fee_subsidy_amount"`
+				} `json:"supplementary_component"`
+			} `json:"shipping_cost_breakdown"`
+			SkuId   string `json:"sku_id"`
+			SkuName string `json:"sku_name"`
+		} `json:"sku_transactions"`
+		TotalCount int `json:"total_count"`
 	} `json:"data"`
 }
 

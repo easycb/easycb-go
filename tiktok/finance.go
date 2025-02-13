@@ -27,9 +27,31 @@ func (c *Client) GetStatementTransactions(statementId string, query easycb.AnyMa
 	return &result, nil
 }
 
+func (c *Client) GetStatementTransactionsV202501(statementId string, query easycb.AnyMap) (*GetStatementTransactionsV202501Rsp, error) {
+	var result GetStatementTransactionsV202501Rsp
+	path := fmt.Sprintf("/finance/202501/statements/%s/statement_transactions", statementId)
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 func (c *Client) GetOrderStatementTransactions(orderId string) (*GetOrderStatementTransactionsRsp, error) {
 	var result GetOrderStatementTransactionsRsp
 	path := fmt.Sprintf("/finance/202309/orders/%s/statement_transactions", orderId)
+	err := c.doRequest("GET", path, nil, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetOrderStatementTransactionsV202501(orderId string) (*GetOrderStatementTransactionsV202501Rsp, error) {
+	var result GetOrderStatementTransactionsV202501Rsp
+	path := fmt.Sprintf("/finance/202501/orders/%s/statement_transactions", orderId)
 	err := c.doRequest("GET", path, nil, nil, &result)
 	if err != nil {
 		return nil, err

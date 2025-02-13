@@ -456,6 +456,17 @@ func (c *Client) SearchManufacturers(query easycb.AnyMap, body easycb.AnyMap) (*
 	return &result, nil
 }
 
+func (c *Client) SearchManufacturersV202501(query easycb.AnyMap, body easycb.AnyMap) (*SearchManufacturersRspV202501, error) {
+	var result SearchManufacturersRspV202501
+	path := "/product/202501/compliance/manufacturers/search"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 func (c *Client) CreateResponsiblePerson(body easycb.AnyMap) (*CreateResponsiblePersonRsp, error) {
 	var result CreateResponsiblePersonRsp
 	path := "/product/202409/compliance/responsible_persons"
@@ -481,6 +492,17 @@ func (c *Client) PartialEditResponsiblePerson(responsiblePersonId string, body e
 func (c *Client) SearchResponsiblePersons(query easycb.AnyMap, body easycb.AnyMap) (*SearchResponsiblePersonsRsp, error) {
 	var result SearchResponsiblePersonsRsp
 	path := "/product/202409/compliance/responsible_persons/search"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) SearchResponsiblePersonsV202501(query easycb.AnyMap, body easycb.AnyMap) (*SearchResponsiblePersonsV202501Rsp, error) {
+	var result SearchResponsiblePersonsV202501Rsp
+	path := "/product/202501/compliance/responsible_persons/search"
 	err := c.doRequest("POST", path, query, body, &result)
 	if err != nil {
 		return nil, err
