@@ -203,10 +203,10 @@ func (c *Client) RecoverProducts(query easycb.AnyMap, body easycb.AnyMap) (*Reco
 	return &result, nil
 }
 
-func (c *Client) GetProduct(itemId string) (*GetProductRsp, error) {
+func (c *Client) GetProduct(itemId string, query easycb.AnyMap) (*GetProductRsp, error) {
 	var result GetProductRsp
 	path := fmt.Sprintf("/product/202309/products/%s", itemId)
-	err := c.doRequest("GET", path, nil, nil, &result)
+	err := c.doRequest("GET", path, query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
