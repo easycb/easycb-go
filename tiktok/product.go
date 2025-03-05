@@ -217,7 +217,7 @@ func (c *Client) GetProduct(itemId string, query easycb.AnyMap) (*GetProductRsp,
 func (c *Client) SearchProducts(query easycb.AnyMap, body easycb.AnyMap) (*SearchProductsRsp, error) {
 	var result SearchProductsRsp
 	path := "/product/202312/products/search"
-	err := c.doRequest("GET", path, query, body, &result)
+	err := c.doRequest("POST", path, query, body, &result)
 	if err != nil {
 		return nil, err
 	}
