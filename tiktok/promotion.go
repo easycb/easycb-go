@@ -74,7 +74,7 @@ func (c *Client) UpdateActivityProduct(activityId string, body easycb.AnyMap) (*
 func (c *Client) RemoveActivityProduct(activityId string, body easycb.AnyMap) (*RemoveActivityProductRsp, error) {
 	var result RemoveActivityProductRsp
 	path := fmt.Sprintf("/promotion/202309/activities/%s/products", activityId)
-	err := c.doRequest("DEL", path, nil, body, &result)
+	err := c.doRequest("DELETE", path, nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

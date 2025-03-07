@@ -184,7 +184,7 @@ func (c *Client) DeactivateProducts(query easycb.AnyMap, body easycb.AnyMap) (*D
 func (c *Client) DeleteProducts(query easycb.AnyMap, body easycb.AnyMap) (*DeleteProductsRsp, error) {
 	var result DeleteProductsRsp
 	path := "/product/202309/products"
-	err := c.doRequest("DEL", path, query, body, &result)
+	err := c.doRequest("DELETE", path, query, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -382,7 +382,7 @@ func (c *Client) EditGlobalProduct(globalProductId string, body easycb.AnyMap) (
 func (c *Client) DeleteGlobalProducts(body easycb.AnyMap) (*DeleteGlobalProductsRsp, error) {
 	var result DeleteGlobalProductsRsp
 	path := "/product/202309/global_products"
-	err := c.doRequest("DEL", path, nil, body, &result)
+	err := c.doRequest("DELETE", path, nil, body, &result)
 	if err != nil {
 		return nil, err
 	}

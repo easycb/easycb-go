@@ -27,7 +27,7 @@ func (c *Client) UpdateShopWebhooks(query easycb.AnyMap, body easycb.AnyMap) (*U
 func (c *Client) DeleteShopWebhooks(query easycb.AnyMap, body easycb.AnyMap) (*DeleteShopWebhooksRsp, error) {
 	var result DeleteShopWebhooksRsp
 	path := "/event/202309/webhooks"
-	err := c.doRequest("DEL", path, query, body, &result)
+	err := c.doRequest("DELETE", path, query, body, &result)
 	if err != nil {
 		return nil, err
 	}

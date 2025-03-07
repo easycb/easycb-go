@@ -151,7 +151,7 @@ func (c *Client) EditOpenCollaborationSampleRule(query easycb.AnyMap, body easyc
 func (c *Client) RemoveTargetCollaboration(targetCollaborationId string, query easycb.AnyMap) (*RemoveTargetCollaborationRsp, error) {
 	var result RemoveTargetCollaborationRsp
 	path := fmt.Sprintf("/affiliate_seller/202409/target_collaborations/%s", targetCollaborationId)
-	err := c.doRequest("DEL", path, query, nil, &result)
+	err := c.doRequest("DELETE", path, query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -195,7 +195,7 @@ func (c *Client) GetOpenCollaborationSettings(query easycb.AnyMap) (*GetOpenColl
 func (c *Client) RemoveOpenCollaboration(productId string, query easycb.AnyMap) (*RemoveOpenCollaborationRsp, error) {
 	var result RemoveOpenCollaborationRsp
 	path := fmt.Sprintf("/affiliate_seller/202409/open_collaborations/products/%s", productId)
-	err := c.doRequest("DEL", path, query, nil, &result)
+	err := c.doRequest("DELETE", path, query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
