@@ -172,7 +172,7 @@ func (c *Client) URLValues(query easycb.AnyMap, apiPath string) (value url.Value
 	}
 
 	// If you want to search multiple status, please upload the url like this: item_status=NORMAL&item_status=BANNED
-	if apiPath == "/api/v2/product/get_item_list" {
+	if apiPath == "/api/v2/product/get_item_list" || apiPath == "/api/v2/product/search_item" {
 		if itemStatuses, ok := query["item_status"].([]string); ok {
 			delete(query, "item_status")
 			for _, status := range itemStatuses {
