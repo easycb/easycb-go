@@ -1126,3 +1126,18 @@ type GetAitemByPitemIdRsp struct {
 		} `json:"aitem_list"`
 	} `json:"response"`
 }
+
+type SearchAttributeValueListRsp struct {
+	BaseRsp
+	DebugMessage string `json:"debug_message"`
+	Response     struct {
+		ValueList []struct {
+			ValueId   int64  `json:"value_id"`
+			ValueName string `json:"value_name"`
+		} `json:"value_list"`
+		PageInfo struct {
+			Cursor  int64 `json:"cursor"`
+			HasNext bool  `json:"has_next"`
+		} `json:"page_info"`
+	} `json:"response"`
+}

@@ -154,9 +154,9 @@ func (c *Client) DeleteModel(body easycb.AnyMap) (*DeleteModelRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) SupportSizeChart(body easycb.AnyMap) (*SupportSizeChartRsp, error) {
+func (c *Client) SupportSizeChart(query easycb.AnyMap) (*SupportSizeChartRsp, error) {
 	var result SupportSizeChartRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/support_size_chart", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +166,7 @@ func (c *Client) SupportSizeChart(body easycb.AnyMap) (*SupportSizeChartRsp, err
 
 func (c *Client) UpdateSizeChart(body easycb.AnyMap) (*UpdateSizeChartRsp, error) {
 	var result UpdateSizeChartRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/update_size_chart", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -176,7 +176,7 @@ func (c *Client) UpdateSizeChart(body easycb.AnyMap) (*UpdateSizeChartRsp, error
 
 func (c *Client) UnlistItem(body easycb.AnyMap) (*UnlistItemRsp, error) {
 	var result UnlistItemRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/unlist_item", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -186,7 +186,7 @@ func (c *Client) UnlistItem(body easycb.AnyMap) (*UnlistItemRsp, error) {
 
 func (c *Client) UpdatePrice(body easycb.AnyMap) (*UpdatePriceRsp, error) {
 	var result UpdatePriceRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/update_price", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -196,7 +196,7 @@ func (c *Client) UpdatePrice(body easycb.AnyMap) (*UpdatePriceRsp, error) {
 
 func (c *Client) UpdateStock(body easycb.AnyMap) (*UpdateStockRsp, error) {
 	var result UpdateStockRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/update_stock", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -206,7 +206,7 @@ func (c *Client) UpdateStock(body easycb.AnyMap) (*UpdateStockRsp, error) {
 
 func (c *Client) BoostItem(body easycb.AnyMap) (*BoostItemRsp, error) {
 	var result BoostItemRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/boost_item", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -214,9 +214,9 @@ func (c *Client) BoostItem(body easycb.AnyMap) (*BoostItemRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetBoostedList(body easycb.AnyMap) (*GetBoostedListRsp, error) {
+func (c *Client) GetBoostedList(query easycb.AnyMap) (*GetBoostedListRsp, error) {
 	var result GetBoostedListRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_boosted_list", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -224,9 +224,9 @@ func (c *Client) GetBoostedList(body easycb.AnyMap) (*GetBoostedListRsp, error) 
 	return &result, nil
 }
 
-func (c *Client) GetItemPromotion(body easycb.AnyMap) (*GetItemPromotionRsp, error) {
+func (c *Client) GetItemPromotion(query easycb.AnyMap) (*GetItemPromotionRsp, error) {
 	var result GetItemPromotionRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_item_promotion", nil, query, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -236,7 +236,7 @@ func (c *Client) GetItemPromotion(body easycb.AnyMap) (*GetItemPromotionRsp, err
 
 func (c *Client) UpdateSipItemPrice(body easycb.AnyMap) (*UpdateSipItemPriceRsp, error) {
 	var result UpdateSipItemPriceRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/update_sip_item_price", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -244,9 +244,9 @@ func (c *Client) UpdateSipItemPrice(body easycb.AnyMap) (*UpdateSipItemPriceRsp,
 	return &result, nil
 }
 
-func (c *Client) SearchItem(body easycb.AnyMap) (*SearchItemRsp, error) {
+func (c *Client) SearchItem(query easycb.AnyMap) (*SearchItemRsp, error) {
 	var result SearchItemRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/search_item", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -254,9 +254,9 @@ func (c *Client) SearchItem(body easycb.AnyMap) (*SearchItemRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetComment(body easycb.AnyMap) (*GetCommentRsp, error) {
+func (c *Client) GetComment(query easycb.AnyMap) (*GetCommentRsp, error) {
 	var result GetCommentRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_comment", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +266,7 @@ func (c *Client) GetComment(body easycb.AnyMap) (*GetCommentRsp, error) {
 
 func (c *Client) ReplyComment(body easycb.AnyMap) (*ReplyCommentRsp, error) {
 	var result ReplyCommentRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/reply_comment", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -274,9 +274,9 @@ func (c *Client) ReplyComment(body easycb.AnyMap) (*ReplyCommentRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) CategoryRecommend(body easycb.AnyMap) (*CategoryRecommendRsp, error) {
+func (c *Client) CategoryRecommend(query easycb.AnyMap) (*CategoryRecommendRsp, error) {
 	var result CategoryRecommendRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/category_recommend", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -286,7 +286,7 @@ func (c *Client) CategoryRecommend(body easycb.AnyMap) (*CategoryRecommendRsp, e
 
 func (c *Client) RegisterBrand(body easycb.AnyMap) (*RegisterBrandRsp, error) {
 	var result RegisterBrandRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/register_brand", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -294,9 +294,9 @@ func (c *Client) RegisterBrand(body easycb.AnyMap) (*RegisterBrandRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetRecommendAttribute(body easycb.AnyMap) (*GetRecommendAttributeRsp, error) {
+func (c *Client) GetRecommendAttribute(query easycb.AnyMap) (*GetRecommendAttributeRsp, error) {
 	var result GetRecommendAttributeRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_recommend_attribute", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -306,7 +306,7 @@ func (c *Client) GetRecommendAttribute(body easycb.AnyMap) (*GetRecommendAttribu
 
 func (c *Client) GetProductInfo(body easycb.AnyMap) (*GetProductInfoRsp, error) {
 	var result GetProductInfoRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/item/get_product_info", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -316,7 +316,7 @@ func (c *Client) GetProductInfo(body easycb.AnyMap) (*GetProductInfoRsp, error) 
 
 func (c *Client) GetWeightRecommendation(body easycb.AnyMap) (*GetWeightRecommendationRsp, error) {
 	var result GetWeightRecommendationRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/get_weight_recommendation", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -324,9 +324,9 @@ func (c *Client) GetWeightRecommendation(body easycb.AnyMap) (*GetWeightRecommen
 	return &result, nil
 }
 
-func (c *Client) GetSizeChartList(body easycb.AnyMap) (*GetSizeChartListRsp, error) {
+func (c *Client) GetSizeChartList(query easycb.AnyMap) (*GetSizeChartListRsp, error) {
 	var result GetSizeChartListRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_size_chart_list", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -334,9 +334,9 @@ func (c *Client) GetSizeChartList(body easycb.AnyMap) (*GetSizeChartListRsp, err
 	return &result, nil
 }
 
-func (c *Client) GetSizeChartDetail(body easycb.AnyMap) (*GetSizeChartDetailRsp, error) {
+func (c *Client) GetSizeChartDetail(query easycb.AnyMap) (*GetSizeChartDetailRsp, error) {
 	var result GetSizeChartDetailRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_size_chart_detail", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -344,9 +344,9 @@ func (c *Client) GetSizeChartDetail(body easycb.AnyMap) (*GetSizeChartDetailRsp,
 	return &result, nil
 }
 
-func (c *Client) GetItemViolationInfo(body easycb.AnyMap) (*GetItemViolationInfoRsp, error) {
+func (c *Client) GetItemViolationInfo(query easycb.AnyMap) (*GetItemViolationInfoRsp, error) {
 	var result GetItemViolationInfoRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_item_violation_info", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -354,9 +354,9 @@ func (c *Client) GetItemViolationInfo(body easycb.AnyMap) (*GetItemViolationInfo
 	return &result, nil
 }
 
-func (c *Client) GetVariations(body easycb.AnyMap) (*GetVariationsRsp, error) {
+func (c *Client) GetVariations(query easycb.AnyMap) (*GetVariationsRsp, error) {
 	var result GetVariationsRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_variation_tree", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -364,9 +364,9 @@ func (c *Client) GetVariations(body easycb.AnyMap) (*GetVariationsRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetAllVehicleList(body easycb.AnyMap) (*GetAllVehicleListRsp, error) {
+func (c *Client) GetAllVehicleList(query easycb.AnyMap) (*GetAllVehicleListRsp, error) {
 	var result GetAllVehicleListRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_all_vehicle_list", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -374,9 +374,9 @@ func (c *Client) GetAllVehicleList(body easycb.AnyMap) (*GetAllVehicleListRsp, e
 	return &result, nil
 }
 
-func (c *Client) GetVehicleListByCompatibilityDetail(body easycb.AnyMap) (*GetVehicleListByCompatibilityDetailRsp, error) {
+func (c *Client) GetVehicleListByCompatibilityDetail(query easycb.AnyMap) (*GetVehicleListByCompatibilityDetailRsp, error) {
 	var result GetVehicleListByCompatibilityDetailRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_vehicle_list_by_compatibility_detail", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -384,9 +384,9 @@ func (c *Client) GetVehicleListByCompatibilityDetail(body easycb.AnyMap) (*GetVe
 	return &result, nil
 }
 
-func (c *Client) GetItemContentDiagnosisResult(body easycb.AnyMap) (*GetItemContentDiagnosisResultRsp, error) {
+func (c *Client) GetItemContentDiagnosisResult(query easycb.AnyMap) (*GetItemContentDiagnosisResultRsp, error) {
 	var result GetItemContentDiagnosisResultRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_item_content_diagnosis_result", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -396,7 +396,7 @@ func (c *Client) GetItemContentDiagnosisResult(body easycb.AnyMap) (*GetItemCont
 
 func (c *Client) GetItemListByContentDiagnosis(body easycb.AnyMap) (*GetItemListByContentDiagnosisRsp, error) {
 	var result GetItemListByContentDiagnosisRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/get_item_list_by_content_diagnosis", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -404,9 +404,9 @@ func (c *Client) GetItemListByContentDiagnosis(body easycb.AnyMap) (*GetItemList
 	return &result, nil
 }
 
-func (c *Client) GetKitItemLimit(body easycb.AnyMap) (*GetKitItemLimitRsp, error) {
+func (c *Client) GetKitItemLimit(query easycb.AnyMap) (*GetKitItemLimitRsp, error) {
 	var result GetKitItemLimitRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_kit_item_limit", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -416,7 +416,7 @@ func (c *Client) GetKitItemLimit(body easycb.AnyMap) (*GetKitItemLimitRsp, error
 
 func (c *Client) AddKitItem(body easycb.AnyMap) (*AddKitItemRsp, error) {
 	var result AddKitItemRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/add_kit_item", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -426,7 +426,7 @@ func (c *Client) AddKitItem(body easycb.AnyMap) (*AddKitItemRsp, error) {
 
 func (c *Client) UpdateKitItem(body easycb.AnyMap) (*UpdateKitItemRsp, error) {
 	var result UpdateKitItemRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/update_kit_item", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -434,9 +434,9 @@ func (c *Client) UpdateKitItem(body easycb.AnyMap) (*UpdateKitItemRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetKitItemInfo(body easycb.AnyMap) (*GetKitItemInfoRsp, error) {
+func (c *Client) GetKitItemInfo(query easycb.AnyMap) (*GetKitItemInfoRsp, error) {
 	var result GetKitItemInfoRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_kit_item_info", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -444,9 +444,9 @@ func (c *Client) GetKitItemInfo(body easycb.AnyMap) (*GetKitItemInfoRsp, error) 
 	return &result, nil
 }
 
-func (c *Client) GetSspList(body easycb.AnyMap) (*GetSspListRsp, error) {
+func (c *Client) GetSspList(query easycb.AnyMap) (*GetSspListRsp, error) {
 	var result GetSspListRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_ssp_list", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -454,9 +454,9 @@ func (c *Client) GetSspList(body easycb.AnyMap) (*GetSspListRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetSspInfo(body easycb.AnyMap) (*GetSspInfoRsp, error) {
+func (c *Client) GetSspInfo(query easycb.AnyMap) (*GetSspInfoRsp, error) {
 	var result GetSspInfoRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_ssp_info", query, nil, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -466,7 +466,7 @@ func (c *Client) GetSspInfo(body easycb.AnyMap) (*GetSspInfoRsp, error) {
 
 func (c *Client) AddSspItem(body easycb.AnyMap) (*AddSspItemRsp, error) {
 	var result AddSspItemRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/add_ssp_item", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -476,7 +476,7 @@ func (c *Client) AddSspItem(body easycb.AnyMap) (*AddSspItemRsp, error) {
 
 func (c *Client) LinkSsp(body easycb.AnyMap) (*LinkSspRsp, error) {
 	var result LinkSspRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/link_ssp", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -486,7 +486,7 @@ func (c *Client) LinkSsp(body easycb.AnyMap) (*LinkSspRsp, error) {
 
 func (c *Client) UnlinkSsp(body easycb.AnyMap) (*UnlinkSspRsp, error) {
 	var result UnlinkSspRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("POST", "/api/v2/product/unlink_ssp", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
@@ -494,9 +494,19 @@ func (c *Client) UnlinkSsp(body easycb.AnyMap) (*UnlinkSspRsp, error) {
 	return &result, nil
 }
 
-func (c *Client) GetAitemByPitemId(body easycb.AnyMap) (*GetAitemByPitemIdRsp, error) {
+func (c *Client) GetAitemByPitemId(query easycb.AnyMap) (*GetAitemByPitemIdRsp, error) {
 	var result GetAitemByPitemIdRsp
-	err := c.doRequest("POST", "", nil, body, &result)
+	err := c.doRequest("GET", "/api/v2/product/get_aitem_by_pitem_id", query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) SearchAttributeValueList(body easycb.AnyMap) (*SearchAttributeValueListRsp, error) {
+	var result SearchAttributeValueListRsp
+	err := c.doRequest("POST", "/api/v2/product/search_attribute_value_list", nil, body, &result)
 	if err != nil {
 		return nil, err
 	}
