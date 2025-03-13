@@ -181,7 +181,7 @@ func (c *Client) URLValues(query easycb.AnyMap, apiPath string) (value url.Value
 		}
 	}
 
-	if apiPath == "/api/v2/product/get_item_base_info" || apiPath == "/api/v2/product/get_item_extra_info" {
+	if apiPath == "/api/v2/product/get_item_base_info" || apiPath == "/api/v2/product/get_item_extra_info" || apiPath == "/api/v2/global_product/get_global_item_id" {
 		if itemIdList, ok := query["item_id_list"].([]int64); ok {
 			delete(query, "item_id_list")
 			for _, itemId := range itemIdList {
@@ -195,6 +195,15 @@ func (c *Client) URLValues(query easycb.AnyMap, apiPath string) (value url.Value
 			delete(query, "global_item_id_list")
 			for _, itemId := range itemIdList {
 				values.Add("global_item_id_list", strconv.FormatInt(itemId, 10))
+			}
+		}
+	}
+
+	if apiPath == "/api/v2/global_product/get_published_list" {
+		if itemIdList, ok := query["shop_id_list"].([]int64); ok {
+			delete(query, "shop_id_list")
+			for _, itemId := range itemIdList {
+				values.Add("shop_id_list", strconv.FormatInt(itemId, 10))
 			}
 		}
 	}
