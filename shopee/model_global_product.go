@@ -141,7 +141,7 @@ type GetGlobalItemInfoRsp struct {
 			GlobalItemName   string `json:"global_item_name"`
 			Description      string `json:"description"`
 			GlobalItemSku    string `json:"global_item_sku"`
-			GlobalItemStatus int    `json:"global_item_status"`
+			GlobalItemStatus string `json:"global_item_status"`
 			CreateTime       int64  `json:"create_time"`
 			UpdateTime       int64  `json:"update_time"`
 			Image            struct {
