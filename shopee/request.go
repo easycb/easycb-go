@@ -190,6 +190,15 @@ func (c *Client) URLValues(query easycb.AnyMap, apiPath string) (value url.Value
 		}
 	}
 
+	if apiPath == "/api/v2/global_product/get_global_item_info" {
+		if itemIdList, ok := query["global_item_id_list"].([]int64); ok {
+			delete(query, "global_item_id_list")
+			for _, itemId := range itemIdList {
+				values.Add("global_item_id_list", strconv.FormatInt(itemId, 10))
+			}
+		}
+	}
+
 	if apiPath == "/api/v2/product/get_attribute_tree" {
 		if itemIdList, ok := query["category_id_list"].([]int64); ok {
 			delete(query, "category_id_list")
