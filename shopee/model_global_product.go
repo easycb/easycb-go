@@ -148,11 +148,11 @@ type GetGlobalItemInfoRsp struct {
 				ImageIdList  []string `json:"image_id_list"`
 				ImageUrlList []string `json:"image_url_list"`
 			} `json:"image"`
-			Weight    int `json:"weight"`
+			Weight    float64 `json:"weight"`
 			Dimension struct {
-				PackageLength int `json:"package_length"`
-				PackageWidth  int `json:"package_width"`
-				PackageHeight int `json:"package_height"`
+				PackageLength float64 `json:"package_length"`
+				PackageWidth  float64 `json:"package_width"`
+				PackageHeight float64 `json:"package_height"`
 			} `json:"dimension"`
 			PreOrder struct {
 				DaysToShip int `json:"days_to_ship"`
