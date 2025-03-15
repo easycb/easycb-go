@@ -261,7 +261,7 @@ type GetGlobalModelListRsp struct {
 				Image  struct {
 					ImageUrl string `json:"image_url"`
 					ImageId  string `json:"image_id"`
-				} `json:"image"`
+				} `json:"image,omitempty"`
 			} `json:"option_list"`
 		} `json:"tier_variation"`
 		GlobalModel []struct {
@@ -269,16 +269,37 @@ type GetGlobalModelListRsp struct {
 			GlobalModelSku string `json:"global_model_sku"`
 			PriceInfo      struct {
 				OriginalPrice float64 `json:"original_price"`
+				Currency      string  `json:"currency"`
 			} `json:"price_info"`
 			StockInfo []struct {
-				StockType       int `json:"stock_type"`
-				StockLocationId int `json:"stock_location_id"`
-				CurrentStock    int `json:"current_stock"`
-				NormalStock     int `json:"normal_stock"`
-				ReservedStock   int `json:"reserved_stock"`
+				StockType       int    `json:"stock_type"`
+				StockLocationId string `json:"stock_location_id"`
+				CurrentStock    int    `json:"current_stock"`
+				NormalStock     int    `json:"normal_stock"`
+				ReservedStock   int    `json:"reserved_stock"`
 			} `json:"stock_info"`
-			TierIndex []int `json:"tier_index"`
+			TierIndex []int  `json:"tier_index"`
+			Weight    string `json:"weight"`
+			Dimension struct {
+				PackageLength int `json:"package_length"`
+				PackageWidth  int `json:"package_width"`
+				PackageHeight int `json:"package_height"`
+			} `json:"dimension"`
+			PreOrder struct {
+				DaysToShip int `json:"days_to_ship"`
+			} `json:"pre_order"`
+			IsFulfillmentByShopee bool `json:"is_fulfillment_by_shopee"`
 		} `json:"global_model"`
+		StandardiseTierVariation []struct {
+			VariationId         int    `json:"variation_id"`
+			VariationName       string `json:"variation_name"`
+			VariationOptionList []struct {
+				VariationOptionId   int    `json:"variation_option_id"`
+				VariationOptionName string `json:"variation_option_name"`
+				ImageId             string `json:"image_id,omitempty"`
+				ImageUrl            string `json:"image_url,omitempty"`
+			} `json:"variation_option_list"`
+		} `json:"standardise_tier_variation"`
 	} `json:"response"`
 }
 
