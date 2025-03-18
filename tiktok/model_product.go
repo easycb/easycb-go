@@ -873,6 +873,25 @@ type SearchGlobalProductsRsp struct {
 	} `json:"data"`
 }
 
+type SearchGlobalProductsV202309Rsp struct {
+	BaseRsp
+	Data struct {
+		TotalCount     int `json:"total_count"`
+		GlobalProducts []struct {
+			Id     string `json:"id"`
+			Title  string `json:"title"`
+			Status string `json:"status"`
+			Skus   []struct {
+				Id        string `json:"id"`
+				SellerSku string `json:"seller_sku"`
+			} `json:"skus"`
+			CreateTime int64 `json:"create_time"`
+			UpdateTime int64 `json:"update_time"`
+		} `json:"global_products"`
+		NextPageToken string `json:"next_page_token"`
+	} `json:"data"`
+}
+
 type UpdateGlobalInventoryRsp struct {
 	BaseRsp
 }

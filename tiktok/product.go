@@ -412,6 +412,17 @@ func (c *Client) SearchGlobalProducts(query easycb.AnyMap, body easycb.AnyMap) (
 	return &result, nil
 }
 
+func (c *Client) SearchGlobalProductsV202309(query easycb.AnyMap, body easycb.AnyMap) (*SearchGlobalProductsV202309Rsp, error) {
+	var result SearchGlobalProductsV202309Rsp
+	path := "/product/202309/global_products/search"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 func (c *Client) UpdateGlobalInventory(globalProductId string, body easycb.AnyMap) (*UpdateGlobalInventoryRsp, error) {
 	var result UpdateGlobalInventoryRsp
 	path := fmt.Sprintf("/product/202309/global_products/%s/inventory/update", globalProductId)
