@@ -17,15 +17,21 @@ type GetOrderListRsp struct {
 }
 
 type Order struct {
-	Id                                 string `json:"id"`
-	BuyerEmail                         string `json:"buyer_email"`
-	BuyerMessage                       string `json:"buyer_message"`
-	CancelOrderSlaTime                 int64  `json:"cancel_order_sla_time"`
-	CancelReason                       string `json:"cancel_reason"`
-	CancelTime                         int64  `json:"cancel_time"`
-	CancellationInitiator              string `json:"cancellation_initiator"`
-	CollectionDueTime                  int64  `json:"collection_due_time"`
-	CollectionTime                     int64  `json:"collection_time"`
+	Id                    string `json:"id"`
+	BuyerEmail            string `json:"buyer_email"`
+	BuyerMessage          string `json:"buyer_message"`
+	CancelOrderSlaTime    int64  `json:"cancel_order_sla_time"`
+	CancelReason          string `json:"cancel_reason"`
+	CancelTime            int64  `json:"cancel_time"`
+	CancellationInitiator string `json:"cancellation_initiator"`
+	CollectionDueTime     int64  `json:"collection_due_time"`
+	CollectionTime        int64  `json:"collection_time"`
+	CombinedListingSkus   []struct {
+		SkuId     string `json:"sku_id"`
+		SkuCount  int    `json:"sku_count"`
+		ProductId string `json:"product_id"`
+		SellerSku string `json:"seller_sku"`
+	} `json:"combined_listing_skus"`
 	Cpf                                string `json:"cpf"`
 	CreateTime                         int64  `json:"create_time"`
 	DeliveryDueTime                    int64  `json:"delivery_due_time"`
@@ -110,11 +116,15 @@ type Order struct {
 			AddressLevelName string `json:"address_level_name"`
 			AddressName      string `json:"address_name"`
 		} `json:"district_info"`
-		FullAddress string `json:"full_address"`
-		Name        string `json:"name"`
-		PhoneNumber string `json:"phone_number"`
-		PostalCode  string `json:"postal_code"`
-		RegionCode  string `json:"region_code"`
+		FirstName            string `json:"first_name"`
+		FirstNameLocalScript string `json:"first_name_local_script"`
+		FullAddress          string `json:"full_address"`
+		LastName             string `json:"last_name"`
+		LastNameLocalScript  string `json:"last_name_local_script"`
+		Name                 string `json:"name"`
+		PhoneNumber          string `json:"phone_number"`
+		PostalCode           string `json:"postal_code"`
+		RegionCode           string `json:"region_code"`
 	} `json:"recipient_address"`
 	ReplacedOrderId    string `json:"replaced_order_id"`
 	RequestCancelTime  int64  `json:"request_cancel_time"`
