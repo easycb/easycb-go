@@ -233,7 +233,11 @@ func (c *Client) makeSignature(req *http.Request) {
 	if c.ShopID > 0 {
 		input = fmt.Sprintf("%d%s%s%s%d", c.PartnerId, path, timestamp, c.AccessToken, c.ShopID)
 	} else if c.MerchantID > 0 {
-		input = fmt.Sprintf("%d%s%s%s%d", c.PartnerId, path, timestamp, c.AccessToken, c.MerchantID)
+		if strings.HasPrefix(path, "/api/v2/merchant/") {
+			input = fmt.Sprintf("%d%s%s%s%d", c.PartnerId, path, timestamp, c.AccessToken, c.MerchantID)
+		} else {
+			input = fmt.Sprintf("%d%s%s%s", c.PartnerId, path, timestamp, c.AccessToken)
+		}
 	} else {
 		input = fmt.Sprintf("%d%s%s", c.PartnerId, path, timestamp)
 	}
