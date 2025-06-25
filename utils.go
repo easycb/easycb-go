@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"math/rand"
 	"strconv"
 	"strings"
 	"time"
@@ -18,6 +19,19 @@ func GenerateSHA256(input []byte, secret []byte) string {
 	}
 
 	return hex.EncodeToString(h.Sum(nil))
+}
+
+func GenerateRandStr(length int, charset string) string {
+	if charset == "" {
+		charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	}
+
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	b := make([]byte, length)
+	for i := range b {
+		b[i] = charset[r.Intn(len(charset))]
+	}
+	return string(b)
 }
 
 func InterfaceToString(value interface{}) string {

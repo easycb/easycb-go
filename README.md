@@ -2,7 +2,7 @@ English | [简体中文](./README_CN.md)
 
 # Easy Cross Border (EasyCb-Go)
 
-Lazada/Tiktok/Shopee Seller Open Platform SDK For Golang
+Lazada/Tiktok/Shopee/Shein Seller Open Platform SDK For Golang
 
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/easycb/easycb-go)
@@ -12,6 +12,7 @@ Lazada/Tiktok/Shopee Seller Open Platform SDK For Golang
 * Support [Lazada Open Api](https://open.lazada.com/apps/doc/api) 
 * Support [Tiktok Shope Partner Api](https://partner.tiktokshop.com/api/document) `V2`
 * Support [Shopee Open Api](https://open.shopee.com/documents) `V2`
+* Support [Shein Open Api](https://open.sheincorp.com)
 * Every feature comes with tests
 * Developer Friendly
 
@@ -168,6 +169,45 @@ func main() {
 }
 ```
 
+
+A basic example Shein open api:
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+	"github.com/easycb/easycb-go"
+	"github.com/easycb/easycb-go/shein"
+)
+
+func main() {
+	baseUrl := "https://openapi.sheincorp.com"
+	appId := ""
+	openKeyId := ""
+	secretKey := ""
+	client, err := shein.NewClient(appId, openKeyId, secretKey, baseUrl)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	body := easycb.AnyMap{
+		"queryType": 1,
+		"startTime": "2025-05-06 00:00:00",
+		"endTime":   "2025-05-08 00:00:00",
+		"page":      1,
+		"pageSize":  30,
+	}
+	res, err := client.GetOrderList(body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(res)
+}
+```
 
 ## Contributors
 

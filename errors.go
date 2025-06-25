@@ -6,6 +6,7 @@ var (
 	MissLazadaInitParamErr = errors.New("missing lazada init param")
 	MissShopeeInitParamErr = errors.New("missing shopee init param")
 	MissTiktokInitParamErr = errors.New("missing tiktok init param")
+	MissSheinInitParamErr  = errors.New("missing shein init param")
 	MissParamErr           = errors.New("missing required parameter")
 	MarshalErr             = errors.New("marshal error")
 	UnmarshalErr           = errors.New("unmarshal error")
