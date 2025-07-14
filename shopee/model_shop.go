@@ -2,20 +2,27 @@ package shopee
 
 type GetShopInfoRsp struct {
 	BaseRsp
-	ShopName            string `json:"shop_name"`
-	Region              string `json:"region"`
-	Status              string `json:"status"`
-	IsSip               bool   `json:"is_sip"`
-	IsCb                bool   `json:"is_cb"`
-	IsCnsc              bool   `json:"is_cnsc"`
-	AuthTime            int64  `json:"auth_time"`
-	ExpireTime          int64  `json:"expire_time"`
-	ShopCbsc            string `json:"shop_cbsc"`
-	Is3Pf               bool   `json:"is_3pf"`
-	IsUpgradedCbsc      bool   `json:"is_upgraded_cbsc"`
-	MerchantId          int64  `json:"merchant_id"`
-	ShopFulfillmentFlag string `json:"shop_fulfillment_flag"`
-	MtskuUpgradedStatus string `json:"mtsku_upgraded_status"`
+	ShopName             string        `json:"shop_name"`
+	Region               string        `json:"region"`
+	Status               string        `json:"status"`
+	IsSip                bool          `json:"is_sip"`
+	SipAffiShops         []interface{} `json:"sip_affi_shops"`
+	IsCb                 bool          `json:"is_cb"`
+	Message              string        `json:"message"`
+	IsCnsc               bool          `json:"is_cnsc"`
+	AuthTime             int64         `json:"auth_time"`
+	ExpireTime           int64         `json:"expire_time"`
+	ShopCbsc             string        `json:"shop_cbsc"`
+	Is3Pf                bool          `json:"is_3pf"`
+	IsUpgradedCbsc       bool          `json:"is_upgraded_cbsc"`
+	MerchantId           int64         `json:"merchant_id"`
+	ShopFulfillmentFlag  string        `json:"shop_fulfillment_flag"`
+	IsMainShop           bool          `json:"is_main_shop"`
+	IsDirectShop         bool          `json:"is_direct_shop"`
+	LinkedMainShopId     int           `json:"linked_main_shop_id"`
+	LinkedDirectShopList []interface{} `json:"linked_direct_shop_list"`
+	IsOneAwb             bool          `json:"is_one_awb"`
+	MtskuUpgradedStatus  string        `json:"mtsku_upgraded_status"`
 }
 
 type GetProfileRsp struct {
