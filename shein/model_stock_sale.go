@@ -33,6 +33,8 @@ type GoodsInventoryItem struct {
 		TotalLockedQuantity    int    `json:"totalLockedQuantity"`
 		TotalUsableInventory   int    `json:"totalUsableInventory"`
 		TotalTempLockQuantity  int    `json:"totalTempLockQuantity"`
+		TotalOutOfStockQty     int    `json:"totalOutOfStockQty"`
+		TotalTransitQuantity   int    `json:"totalTransitQuantity"`
 		WarehouseInventoryList []struct {
 			WarehouseCode     string `json:"warehouseCode"`
 			WarehouseType     string `json:"warehouseType"`
@@ -40,6 +42,8 @@ type GoodsInventoryItem struct {
 			LockedQuantity    int    `json:"lockedQuantity"`
 			UsableInventory   int    `json:"usableInventory"`
 			TempLockQuantity  int    `json:"tempLockQuantity"`
+			OutOfStockQty     string `json:"outOfStockQty"`
+			TransitQuantity   int    `json:"transitQuantity"`
 		} `json:"warehouseInventoryList"`
 	} `json:"skuList"`
 }
@@ -81,5 +85,6 @@ type QuerySkuSaleItem struct {
 	RealTimeSaleCnt int    `json:"realTimeSaleCnt"`
 	C7DSaleCnt      int    `json:"c7dSaleCnt"`
 	C30DSaleCnt     int    `json:"c30dSaleCnt"`
+	CYdSaleCnt      int    `json:"cydSaleCnt"`
 	Dt              string `json:"dt"`
 }

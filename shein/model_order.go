@@ -21,19 +21,22 @@ type OrderDetailRsp struct {
 }
 
 type OrderDetailItem struct {
-	OrderNo            string      `json:"orderNo"`
-	OrderType          int         `json:"orderType"`
-	PerformanceType    int         `json:"performanceType"`
-	OrderStatus        int         `json:"orderStatus"`
-	IsCod              int         `json:"isCod"`
-	IsOverLimitOrder   int         `json:"isOverLimitOrder"`
-	UnpackingStatus    interface{} `json:"unpackingStatus"`
-	OrderTag           int         `json:"orderTag"`
-	DeliveryType       int         `json:"deliveryType"`
-	PrintOrderStatus   int         `json:"printOrderStatus"`
-	InvoiceStatus      int         `json:"invoiceStatus"`
-	OrderGoodsInfoList []struct {
-		GoodsId        int    `json:"goodsId"`
+	OrderNo               string      `json:"orderNo"`
+	OrderType             int         `json:"orderType"`
+	OptionalLogisticsList []int       `json:"optionalLogisticsList"`
+	OrderLogisticsType    int         `json:"orderLogisticsType"`
+	OrderPlaceType        int         `json:"orderPlaceType"`
+	PerformanceType       int         `json:"performanceType"`
+	OrderStatus           int         `json:"orderStatus"`
+	IsCod                 int         `json:"isCod"`
+	IsOverLimitOrder      int         `json:"isOverLimitOrder"`
+	UnpackingStatus       interface{} `json:"unpackingStatus"`
+	OrderTag              int         `json:"orderTag"`
+	DeliveryType          int         `json:"deliveryType"`
+	PrintOrderStatus      int         `json:"printOrderStatus"`
+	InvoiceStatus         int         `json:"invoiceStatus"`
+	OrderGoodsInfoList    []struct {
+		GoodsId        int64  `json:"goodsId"`
 		SkuCode        string `json:"skuCode"`
 		Skc            string `json:"skc"`
 		GoodsSn        string `json:"goodsSn"`
@@ -74,10 +77,20 @@ type OrderDetailItem struct {
 		WarehouseName                 string      `json:"warehouseName"`
 		SellerCurrencyDiscountPrice   float64     `json:"sellerCurrencyDiscountPrice"`
 		MxTaxPrice                    float64     `json:"mxTaxPrice"`
+		TimeOutList                   []struct {
+			TimeOutType int    `json:"timeOutType"`
+			TimeOutTime string `json:"timeOutTime"`
+		} `json:"timeOutList"`
+		CustomizationFlag int `json:"customizationFlag"`
+		CustomizationInfo struct {
+			CustomInfoId string   `json:"customInfoId"`
+			Texts        []string `json:"texts"`
+		} `json:"customizationInfo,omitempty"`
 	} `json:"orderGoodsInfoList"`
 	PackageWaybillList []struct {
 		PackageNo            string `json:"packageNo"`
 		WaybillNo            string `json:"waybillNo"`
+		DeliveryNo           string `json:"deliveryNo"`
 		Carrier              string `json:"carrier"`
 		CarrierCode          string `json:"carrierCode"`
 		ProductInventoryList []struct {
@@ -134,7 +147,15 @@ type OrderDetailItem struct {
 		ProposalEnglish    interface{} `json:"proposalEnglish"`
 		PackageNo          string      `json:"packageNo"`
 	} `json:"packageInvoiceProblems"`
+	ReceiveMsg struct {
+		City     string `json:"city"`
+		Country  string `json:"country"`
+		Province string `json:"province"`
+		PostCode string `json:"postCode"`
+	} `json:"receiveMsg,omitempty"`
 	ExpectedCollectTime string `json:"expectedCollectTime"`
+	CteInvoiceStatus    int    `json:"cteInvoiceStatus"`
+	RequestSignTime     int    `json:"requestSignTime"`
 }
 
 type ExportAddressRsp struct {
@@ -160,29 +181,39 @@ type ExportAddressItem struct {
 	Phone      string      `json:"phone"`
 	PostCode   string      `json:"postCode"`
 	TaxNo      string      `json:"taxNo"`
+	Email      string      `json:"email"`
 }
 
 type GetExpressChannelRsp struct {
 	BaseRsp
 	Info struct {
-		ExpressChannels []ExpressChannelItem `json:"expressChannels"`
+		ExpressChannels           []ExpressChannelItem           `json:"expressChannels"`
+		PlatformLogisticsChannels []PlatformLogisticsChannelItem `json:"platformLogisticsChannels"`
 	} `json:"info"`
 }
 
 type ExpressChannelItem struct {
-	Site               string  `json:"site"`
-	ExpressIdCode      string  `json:"expressIdCode"`
-	ExpressChannelCode *string `json:"expressChannelCode"`
+	Site               string `json:"site"`
+	ExpressIdCode      string `json:"expressIdCode"`
+	ExpressChannelCode string `json:"expressChannelCode"`
+}
+
+type PlatformLogisticsChannelItem struct {
+	Site          string `json:"site"`
+	ExpressId     int    `json:"expressId"`
+	ExpressIdCode string `json:"expressIdCode"`
 }
 
 type ImportBatchMultipleExpressRsp struct {
 	BaseRsp
 	Info []struct {
-		GoodsId       interface{} `json:"goodsId"`
-		ExpressCode   string      `json:"expressCode"`
-		ExpressIdCode string      `json:"expressIdCode"`
-		ErrorMsg      string      `json:"errorMsg"`
-		Status        int         `json:"status"`
+		GoodsId                      interface{} `json:"goodsId"`
+		ExpressCode                  string      `json:"expressCode"`
+		ExpressIdCode                string      `json:"expressIdCode"`
+		ExpressChannelCode           string      `json:"expressChannelCode"`
+		ErrorMsg                     string      `json:"errorMsg"`
+		Status                       string      `json:"status"`
+		ErrorOrderGoodsExpressRemark string      `json:"errorOrderGoodsExpressRemark"`
 	} `json:"info"`
 }
 
@@ -196,52 +227,7 @@ type ImportBatchExpressItem struct {
 
 type SyncInvoiceInfoRsp struct {
 	BaseRsp
-	Info struct {
-		SyncInvoiceInfoItem
-	} `json:"info"`
-}
-
-type SyncInvoiceInfoItem struct {
-	OrderInvoiceInfos []struct {
-		OrderNo             string  `json:"orderNo"`
-		Ie                  string  `json:"ie"`
-		Icms                string  `json:"icms"`
-		InvoiceNo           string  `json:"invoiceNo"`
-		InvoiceKey          string  `json:"invoiceKey"`
-		InvoiceSn           string  `json:"invoiceSn"`
-		Amount              float64 `json:"amount"`
-		TaxNo               string  `json:"taxNo"`
-		Currency            string  `json:"currency"`
-		InvoiceType         string  `json:"invoiceType"`
-		AuthorizationNumber string  `json:"authorizationNumber"`
-		AuthorizationTime   string  `json:"authorizationTime"`
-		InvoiceIssueTime    string  `json:"invoiceIssueTime"`
-		Quantity            string  `json:"quantity"`
-		SendMsg             struct {
-			Name              string `json:"name"`
-			TaxNo             string `json:"taxNo"`
-			Ie                string `json:"ie"`
-			StateProvinceCode string `json:"stateProvinceCode"`
-			CityCode          string `json:"cityCode"`
-			City              string `json:"city"`
-			Neighborhood      string `json:"neighborhood"`
-			Street            string `json:"street"`
-			HouseNumber       string `json:"houseNumber"`
-			ZipCode           string `json:"zipCode"`
-		} `json:"sendMsg"`
-		ReceiveMsg struct {
-			Name              string `json:"name"`
-			TaxNo             string `json:"taxNo"`
-			Ie                string `json:"ie"`
-			StateProvinceCode string `json:"stateProvinceCode"`
-			CityCode          string `json:"cityCode"`
-			City              string `json:"city"`
-			Neighborhood      string `json:"neighborhood"`
-			Street            string `json:"street"`
-			HouseNumber       string `json:"houseNumber"`
-			ZipCode           string `json:"zipCode"`
-		} `json:"receiveMsg"`
-	} `json:"orderInvoiceInfos"`
+	Info interface{} `json:"info"`
 }
 
 type PrintExpressInfoRsp struct {
@@ -250,9 +236,11 @@ type PrintExpressInfoRsp struct {
 }
 
 type PrintExpressInfoItem struct {
-	OrderNo    string `json:"orderNo"`
-	PackageNo  string `json:"packageNo"`
-	FilePdfUrl string `json:"filePdfUrl"`
+	OrderNo    string      `json:"orderNo"`
+	PackageNo  string      `json:"packageNo"`
+	FilePdfUrl string      `json:"filePdfUrl"`
+	Remark     interface{} `json:"remark"`
+	DeliveryNo interface{} `json:"deliveryNo"`
 }
 
 type LogisticsTrackRsp struct {
@@ -285,4 +273,67 @@ type UnpackingGroupRemoveRsp struct {
 
 type UnpackingGroupConfirmRsp struct {
 	BaseRsp
+}
+
+type SwitchSelfShippingRsp struct {
+	BaseRsp
+}
+
+type PlaceExpressOrderRsp struct {
+	BaseRsp
+	Info struct {
+		DeliveryNo     string `json:"deliveryNo"`
+		PlaceRequestId string `json:"placeRequestId"`
+	} `json:"info"`
+}
+
+type WarehouseAddressRsp struct {
+	BaseRsp
+	Info struct {
+		OpenApiAddressInfos []struct {
+			WarehouseAddressCode string   `json:"warehouseAddressCode"`
+			WarehouseName        string   `json:"warehouseName"`
+			SalesSite            []string `json:"salesSite"`
+			AddressInfo          struct {
+				Country  string `json:"country"`
+				Province string `json:"province"`
+				State    string `json:"state"`
+				City     string `json:"city"`
+				District string `json:"district"`
+				PostCode string `json:"postCode"`
+				Address1 string `json:"address1"`
+				Address2 string `json:"address2"`
+				Phone    string `json:"phone"`
+			} `json:"addressInfo"`
+		} `json:"openApiAddressInfos"`
+	} `json:"info"`
+}
+
+type ChackExpressOrderRsp struct {
+	BaseRsp
+	Info struct {
+		PlaceRequestId           string `json:"placeRequestId"`
+		DeliveryNo               string `json:"deliveryNo"`
+		HandleResult             int    `json:"handleResult"`
+		PlaceStateFailReasonDesc string `json:"placeStateFailReasonDesc"`
+		PrintStatus              int    `json:"printStatus"`
+	} `json:"info"`
+}
+
+type OrderMappingChannelsRsp struct {
+	Info struct {
+		WarehouseAddressCode string `json:"warehouseAddressCode"`
+		OrderNo              string `json:"orderNo"`
+		PreRequestId         string `json:"preRequestId"`
+		ChannelInfoList      []struct {
+			ExpressIdCode      string      `json:"expressIdCode"`
+			ExpressId          int         `json:"expressId"`
+			ExpressChannelCode string      `json:"expressChannelCode"`
+			ExpressShortName   string      `json:"expressShortName"`
+			PerformanceCost    float64     `json:"performanceCost"`
+			CurrencyCode       string      `json:"currencyCode"`
+			EstimateMinDay     interface{} `json:"estimateMinDay"`
+			EstimateMaxDay     interface{} `json:"estimateMaxDay"`
+		} `json:"channelInfoList"`
+	} `json:"info"`
 }

@@ -9,9 +9,10 @@ type QueryStoreInfoRsp struct {
 			UsedQuota      int `json:"usedQuota"`
 		} `json:"storeProductQuota"`
 		StoreInfo struct {
-			SupplierId  int         `json:"supplierId"`
-			StoreName   interface{} `json:"storeName"`
-			StoreStatus interface{} `json:"storeStatus"`
+			SupplierId           int         `json:"supplierId"`
+			StoreName            interface{} `json:"storeName"`
+			StoreStatus          interface{} `json:"storeStatus"`
+			SupplierBusinessMode string      `json:"supplierBusinessMode"`
 		} `json:"storeInfo"`
 	} `json:"info"`
 }

@@ -22,30 +22,30 @@ type ReturnOrderDetailRsp struct {
 }
 
 type ReturnOrderDetailItem struct {
-	ReturnOrderNo            string        `json:"returnOrderNo"`
-	ReturnOrderStatus        int           `json:"returnOrderStatus"`
-	NoReturnGoodsSign        int           `json:"noReturnGoodsSign"`
-	ReturnOrderTagCode       interface{}   `json:"returnOrderTagCode"`
-	OrderNo                  string        `json:"orderNo"`
-	Site                     string        `json:"site"`
-	ShippingCode             string        `json:"shippingCode"`
-	PlatformExpressNo        string        `json:"platformExpressNo"`
-	MemberExpressNo          string        `json:"memberExpressNo"`
-	ExpressCompanyName       string        `json:"expressCompanyName"`
-	RefundOrderNos           []interface{} `json:"refundOrderNos"`
-	RefundWaybill            string        `json:"refundWaybill"`
-	RefundExpressCompanyName string        `json:"refundExpressCompanyName"`
-	PerformanceCost          int           `json:"performanceCost"`
-	InvoiceStatus            int           `json:"invoiceStatus"`
-	RequestReturnTime        string        `json:"requestReturnTime"`
-	AllocateTime             string        `json:"allocateTime"`
-	LastUpdateTime           string        `json:"lastUpdateTime"`
-	SellerSignedTime         string        `json:"sellerSignedTime"`
-	CancelTime               string        `json:"cancelTime"`
-	CompletedTime            string        `json:"completedTime"`
-	CheckStatus              int           `json:"checkStatus"`
-	StockMode                int           `json:"stockMode"`
-	ReceiveType              int           `json:"receiveType"`
+	ReturnOrderNo            string      `json:"returnOrderNo"`
+	ReturnOrderStatus        int         `json:"returnOrderStatus"`
+	NoReturnGoodsSign        int         `json:"noReturnGoodsSign"`
+	ReturnOrderTagCode       interface{} `json:"returnOrderTagCode"`
+	OrderNo                  string      `json:"orderNo"`
+	Site                     string      `json:"site"`
+	ShippingCode             string      `json:"shippingCode"`
+	PlatformExpressNo        string      `json:"platformExpressNo"`
+	MemberExpressNo          string      `json:"memberExpressNo"`
+	ExpressCompanyName       string      `json:"expressCompanyName"`
+	RefundOrderNos           []string    `json:"refundOrderNos"`
+	RefundWaybill            string      `json:"refundWaybill"`
+	RefundExpressCompanyName string      `json:"refundExpressCompanyName"`
+	PerformanceCost          int         `json:"performanceCost"`
+	InvoiceStatus            int         `json:"invoiceStatus"`
+	RequestReturnTime        string      `json:"requestReturnTime"`
+	AllocateTime             string      `json:"allocateTime"`
+	LastUpdateTime           string      `json:"lastUpdateTime"`
+	SellerSignedTime         string      `json:"sellerSignedTime"`
+	CancelTime               string      `json:"cancelTime"`
+	CompletedTime            string      `json:"completedTime"`
+	CheckStatus              int         `json:"checkStatus"`
+	StockMode                int         `json:"stockMode"`
+	ReceiveType              int         `json:"receiveType"`
 	ReturnGoodsInfoList      []struct {
 		GoodsId                int         `json:"goodsId"`
 		Sku                    string      `json:"sku"`

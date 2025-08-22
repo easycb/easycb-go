@@ -111,3 +111,53 @@ func (c *Client) UnpackingGroupConfirm(body easycb.AnyMap) (*UnpackingGroupConfi
 
 	return &result, nil
 }
+
+func (c *Client) SwitchSelfShipping(body easycb.AnyMap) (*SwitchSelfShippingRsp, error) {
+	var result SwitchSelfShippingRsp
+	err := c.doRequest("POST", "/open-api/gsp/switch-self-shipping", nil, body, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) PlaceExpressOrder(body easycb.AnyMap) (*PlaceExpressOrderRsp, error) {
+	var result PlaceExpressOrderRsp
+	err := c.doRequest("POST", "/open-api/gsp/place-express-order", nil, body, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) WarehouseAddress(body easycb.AnyMap) (*WarehouseAddressRsp, error) {
+	var result WarehouseAddressRsp
+	err := c.doRequest("POST", "/open-api/gsp/warehouse-address", nil, body, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) ChackExpressOrder(body easycb.AnyMap) (*ChackExpressOrderRsp, error) {
+	var result ChackExpressOrderRsp
+	err := c.doRequest("POST", "/open-api/gsp/chack-express-order", nil, body, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) OrderMappingChannels(body easycb.AnyMap) (*OrderMappingChannelsRsp, error) {
+	var result OrderMappingChannelsRsp
+	err := c.doRequest("POST", "/open-api/gsp/order-mapping-channels", nil, body, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

@@ -10,8 +10,8 @@ type FinanceReportListRsp struct {
 
 type FinanceReportListItem struct {
 	ReportOrderNo            string  `json:"reportOrderNo"`
-	SalesTotal               int     `json:"salesTotal"`
-	ReplenishTotal           int     `json:"replenishTotal"`
+	SalesTotal               int64   `json:"salesTotal"`
+	ReplenishTotal           int64   `json:"replenishTotal"`
 	AddTime                  string  `json:"addTime"`
 	LastUpdateTime           string  `json:"lastUpdateTime"`
 	SettlementStatus         int     `json:"settlementStatus"`
@@ -21,6 +21,7 @@ type FinanceReportListItem struct {
 	CompanyName              string  `json:"companyName"`
 	EstimateIncomeMoneyTotal float64 `json:"estimateIncomeMoneyTotal"`
 	CurrencyCode             string  `json:"currencyCode"`
+	ExpressType              int     `json:"expenseType"`
 }
 
 type FinanceReportSalesDetailRsp struct {
@@ -47,6 +48,8 @@ type FinanceReportSalesDetailItem struct {
 	CompanyName         string  `json:"companyName"`
 	AddTime             string  `json:"addTime"`
 	UnitPrice           float64 `json:"unitPrice"`
+	ExpenseType         int     `json:"expenseType"`
+	SupplierSku         string  `json:"supplierSku"`
 }
 
 type FinanceAdjustmentDetailRsp struct {
@@ -73,6 +76,8 @@ type FinanceReportReplenishDetailItem struct {
 	Amount             float64     `json:"amount"`
 	CompanyName        string      `json:"companyName"`
 	AddTime            string      `json:"addTime"`
+	ExpenseType        int         `json:"expenseType"`
+	SupplierSku        string      `json:"supplierSku"`
 }
 
 type FinanceGetCheckOrderListRsp struct {
