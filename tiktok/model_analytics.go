@@ -384,3 +384,89 @@ type GetShopVideoProductPerformanceListRsp struct {
 		TotalCount int `json:"total_count"`
 	} `json:"data"`
 }
+
+type GetShopLivePerformanceListRsp struct {
+	BaseRsp
+	Data *struct {
+		LiveStreamSessions []struct {
+			Id               string `json:"id"`
+			Title            string `json:"title"`
+			Username         string `json:"username"`
+			StartTime        string `json:"start_time"`
+			EndTime          string `json:"end_time"`
+			SalesPerformance struct {
+				Gmv struct {
+					Amount   string `json:"amount"`
+					Currency string `json:"currency"`
+				} `json:"gmv"`
+				ProductsAdded         int `json:"products_added"`
+				DifferentProductsSold int `json:"different_products_sold"`
+				CreatedSkuOrders      int `json:"created_sku_orders"`
+				SkuOrders             int `json:"sku_orders"`
+				UnitSold              int `json:"unit_sold"`
+				Customers             int `json:"customers"`
+				AvgPrice              struct {
+					Amount   string `json:"amount"`
+					Currency string `json:"currency"`
+				} `json:"avg_price"`
+				ClickToOrderRate string `json:"click_to_order_rate"`
+				HLiveGmv         struct {
+					Amount   string `json:"amount"`
+					Currency string `json:"currency"`
+				} `json:"24h_live_gmv"`
+			} `json:"sales_performance"`
+			InteractionPerformance struct {
+				Acu                int    `json:"acu"`
+				Pcu                int    `json:"pcu"`
+				Viewers            int    `json:"viewers"`
+				Views              int    `json:"views"`
+				AvgViewingDuration string `json:"avg_viewing_duration"`
+				Comments           int    `json:"comments"`
+				Shares             int    `json:"shares"`
+				Likes              int    `json:"likes"`
+				NewFollowers       int    `json:"new_followers"`
+				ProductImpressions int    `json:"product_impressions"`
+				ProductClicks      int    `json:"product_clicks"`
+				ClickThroughRate   string `json:"click_through_rate"`
+			} `json:"interaction_performance"`
+		} `json:"live_stream_sessions"`
+		LatestAvailableDate string `json:"latest_available_date"`
+		NextPageToken       string `json:"next_page_token"`
+		TotalCount          int    `json:"total_count"`
+	} `json:"data,omitempty"`
+}
+
+type GetShopLivePerformanceOverviewRsp struct {
+	BaseRsp
+	Data *struct {
+		Performance struct {
+			Intervals []struct {
+				StartDate string `json:"start_date"`
+				EndDate   string `json:"end_date"`
+				Gmv       struct {
+					Amount   string `json:"amount"`
+					Currency string `json:"currency"`
+				} `json:"gmv"`
+				SkuOrders        int    `json:"sku_orders"`
+				Customers        int    `json:"customers"`
+				UnitsSold        int    `json:"units_sold"`
+				ClickToOrderRate string `json:"click_to_order_rate"`
+				ClickThroughRate string `json:"click_through_rate"`
+			} `json:"intervals"`
+			ComparisonIntervals []struct {
+				StartDate string `json:"start_date"`
+				EndDate   string `json:"end_date"`
+				Gmv       struct {
+					Amount   string `json:"amount"`
+					Currency string `json:"currency"`
+				} `json:"gmv"`
+				SkuOrders        int    `json:"sku_orders"`
+				Customers        int    `json:"customers"`
+				UnitsSold        int    `json:"units_sold"`
+				ClickToOrderRate string `json:"click_to_order_rate"`
+				ClickThroughRate string `json:"click_through_rate"`
+			} `json:"comparison_intervals"`
+		} `json:"performance"`
+		LatestAvailableDate string `json:"latest_available_date"`
+	} `json:"data,omitempty"`
+}

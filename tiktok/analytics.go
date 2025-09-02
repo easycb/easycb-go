@@ -103,3 +103,25 @@ func (c *Client) GetShopVideoProductPerformanceList(videoId string, query easycb
 
 	return &result, nil
 }
+
+func (c *Client) GetShopLivePerformanceList(query easycb.AnyMap) (*GetShopLivePerformanceListRsp, error) {
+	var result GetShopLivePerformanceListRsp
+	path := "/analytics/202508/shop_lives/performance"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetShopLivePerformanceOverview(query easycb.AnyMap) (*GetShopLivePerformanceOverviewRsp, error) {
+	var result GetShopLivePerformanceOverviewRsp
+	path := "/analytics/202508/shop_lives/overview_performance"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
