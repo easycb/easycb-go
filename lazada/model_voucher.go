@@ -3,7 +3,7 @@ package lazada
 type SellerVoucheDeleteSelectedProductSKURsp struct {
 	ErrorMsg  string `json:"error_msg"`
 	Code      string `json:"code"`
-	Success   string `json:"success"`
+	Success   bool   `json:"success"`
 	ErrorCode int    `json:"error_code"`
 	RequestId string `json:"request_id"`
 }
@@ -75,7 +75,7 @@ type SellerVoucherListRsp struct {
 			VoucherCode                   string `json:"voucher_code"`
 			OfferingMoneyValueOff         string `json:"offering_money_value_off"`
 			OrderUsedBudget               int    `json:"order_used_budget"`
-			OfferingPercentageDiscountOff string `json:"offering_percentage_discount_off"`
+			OfferingPercentageDiscountOff int    `json:"offering_percentage_discount_off"`
 			PeriodStartTime               int64  `json:"period_start_time"`
 			DisplayArea                   string `json:"display_area"`
 			VoucherType                   string `json:"voucher_type"`
@@ -101,12 +101,12 @@ type SellerVoucherSelectedProductListRsp struct {
 	Code     string `json:"code"`
 	Data     struct {
 		DataList []struct {
-			SkuIds    []int64 `json:"sku_ids"`
-			ProductId int64   `json:"product_id"`
+			SkuIds    []string `json:"sku_ids"`
+			ProductId int64    `json:"product_id"`
 		} `json:"data_list"`
-		Total    string `json:"total"`
-		Current  string `json:"current"`
-		PageSize string `json:"page_size"`
+		Total    int `json:"total"`
+		Current  int `json:"current"`
+		PageSize int `json:"page_size"`
 	} `json:"data"`
 	Success   bool   `json:"success"`
 	ErrorCode int    `json:"error_code"`
