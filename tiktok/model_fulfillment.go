@@ -329,3 +329,25 @@ type UpdatePackageDeliveryStatusRsp struct {
 		} `json:"errors"`
 	} `json:"data"`
 }
+
+type UploadInvoiceRsp struct {
+	BaseRsp
+	Data struct {
+		Errors []struct {
+			Code    int    `json:"code"`
+			Message string `json:"message"`
+			Detail  struct {
+				PackageId string   `json:"package_id"`
+				OrderIds  []string `json:"order_ids"`
+			} `json:"detail"`
+		} `json:"errors"`
+	} `json:"data"`
+}
+
+type TTSTrackingValidationRsp struct {
+	BaseRsp
+	Data struct {
+		IsTiktokShipping   bool `json:"is_tiktok_shipping"`
+		IsTiktokCollection bool `json:"is_tiktok_collection"`
+	} `json:"data"`
+}

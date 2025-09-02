@@ -81,3 +81,14 @@ func (c *Client) GetWithdrawals(query easycb.AnyMap) (*GetWithdrawalsRsp, error)
 
 	return &result, nil
 }
+
+func (c *Client) GetUnsettledTransactions(query easycb.AnyMap) (*GetUnsettledTransactionsRsp, error) {
+	var result GetUnsettledTransactionsRsp
+	path := "/finance/202507/orders/unsettled"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

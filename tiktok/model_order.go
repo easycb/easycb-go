@@ -7,6 +7,13 @@ type GetOrderDetailRsp struct {
 	} `json:"data"`
 }
 
+type GetOrderDetailV202507Rsp struct {
+	BaseRsp
+	Data struct {
+		Orders []OrderV202507 `json:"orders"`
+	} `json:"data"`
+}
+
 type GetOrderListRsp struct {
 	BaseRsp
 	Data struct {
@@ -17,22 +24,27 @@ type GetOrderListRsp struct {
 }
 
 type Order struct {
-	Id                    string `json:"id"`
-	BuyerEmail            string `json:"buyer_email"`
-	BuyerMessage          string `json:"buyer_message"`
-	CancelOrderSlaTime    int64  `json:"cancel_order_sla_time"`
-	CancelReason          string `json:"cancel_reason"`
-	CancelTime            int64  `json:"cancel_time"`
-	CancellationInitiator string `json:"cancellation_initiator"`
-	CollectionDueTime     int64  `json:"collection_due_time"`
-	CollectionTime        int64  `json:"collection_time"`
-	CombinedListingSkus   []struct {
+	Id                              string `json:"id"`
+	AutoCombineGroupId              string `json:"auto_combine_group_id"`
+	BuyerEmail                      string `json:"buyer_email"`
+	BuyerMessage                    string `json:"buyer_message"`
+	CancelOrderSlaTime              int64  `json:"cancel_order_sla_time"`
+	CancelReason                    string `json:"cancel_reason"`
+	CancelTime                      int64  `json:"cancel_time"`
+	CancellationInitiator           string `json:"cancellation_initiator"`
+	ChannelEntityNationalRegistryId string `json:"channel_entity_national_registry_id"`
+	CollectionDueTime               int64  `json:"collection_due_time"`
+	CollectionTime                  int64  `json:"collection_time"`
+	CombinedListingSkus             []struct {
 		SkuId     string `json:"sku_id"`
 		SkuCount  int    `json:"sku_count"`
 		ProductId string `json:"product_id"`
 		SellerSku string `json:"seller_sku"`
 	} `json:"combined_listing_skus"`
+	CommercePlatform                   string `json:"commerce_platform"`
+	ConsultationId                     string `json:"consultation_id"`
 	Cpf                                string `json:"cpf"`
+	CpfName                            string `json:"cpf_name"`
 	CreateTime                         int64  `json:"create_time"`
 	DeliveryDueTime                    int64  `json:"delivery_due_time"`
 	DeliveryOptionId                   string `json:"delivery_option_id"`
@@ -40,14 +52,24 @@ type Order struct {
 	DeliveryOptionRequiredDeliveryTime int64  `json:"delivery_option_required_delivery_time"`
 	DeliverySlaTime                    int64  `json:"delivery_sla_time"`
 	DeliveryTime                       int64  `json:"delivery_time"`
+	DeliveryType                       int64  `json:"delivery_type"`
+	ExchangeSourceOrderId              int64  `json:"exchange_source_order_id"`
+	FastDeliveryProgram                string `json:"fast_delivery_program"`
+	FastDispatchSlaTime                int64  `json:"fast_dispatch_sla_time"`
 	FulfillmentType                    string `json:"fulfillment_type"`
+	FulfillmentPriorityLevel           string `json:"fulfillment_priority_level"`
 	HasUpdatedRecipientAddress         bool   `json:"has_updated_recipient_address"`
-	IsBuyerRequestCancel               bool   `json:"is_buyer_request_cancel"`
-	IsCod                              bool   `json:"is_cod"`
-	IsOnHoldOrder                      bool   `json:"is_on_hold_order"`
-	IsReplacementOrder                 bool   `json:"is_replacement_order"`
-	IsSampleOrder                      bool   `json:"is_sample_order"`
-	LineItems                          []struct {
+	HandlingDuration                   struct {
+		Days string `json:"days"`
+		Type string `json:"type"`
+	} `json:"handling_duration"`
+	IsBuyerRequestCancel bool `json:"is_buyer_request_cancel"`
+	IsCod                bool `json:"is_cod"`
+	IsExchangeOrder      bool `json:"is_exchange_order"`
+	IsOnHoldOrder        bool `json:"is_on_hold_order"`
+	IsReplacementOrder   bool `json:"is_replacement_order"`
+	IsSampleOrder        bool `json:"is_sample_order"`
+	LineItems            []struct {
 		Id            string `json:"id"`
 		CancelReason  string `json:"cancel_reason"`
 		CancelUser    string `json:"cancel_user"`
@@ -80,12 +102,16 @@ type Order struct {
 		TrackingNumber       string `json:"tracking_number"`
 	} `json:"line_items"`
 	NeedUploadInvoice string `json:"need_upload_invoice"`
+	OrderType         string `json:"order_type"`
 	Packages          []struct {
 		Id string `json:"id"`
 	} `json:"packages"`
 	PaidTime int64 `json:"paid_time"`
 	Payment  struct {
 		Currency                    string `json:"currency"`
+		BuyerServiceFee             string `json:"buyer_service_fee"`
+		HandlingFee                 string `json:"handling_fee"`
+		ItemInsuranceFee            string `json:"item_insurance_fee"`
 		OriginalShippingFee         string `json:"original_shipping_fee"`
 		OriginalTotalProductPrice   string `json:"original_total_product_price"`
 		PlatformDiscount            string `json:"platform_discount"`
@@ -93,15 +119,21 @@ type Order struct {
 		RetailDeliveryFee           string `json:"retail_delivery_fee"`
 		SellerDiscount              string `json:"seller_discount"`
 		ShippingFee                 string `json:"shipping_fee"`
+		ShippingFeeCofundedDiscount string `json:"shipping_fee_cofunded_discount"`
 		ShippingFeePlatformDiscount string `json:"shipping_fee_platform_discount"`
 		ShippingFeeSellerDiscount   string `json:"shipping_fee_seller_discount"`
 		ShippingFeeTax              string `json:"shipping_fee_tax"`
+		ShippingInsuranceFee        string `json:"shipping_insurance_fee"`
 		SmallOrderFee               string `json:"small_order_fee"`
 		SubTotal                    string `json:"sub_total"`
 		Tax                         string `json:"tax"`
 		TotalAmount                 string `json:"total_amount"`
 	} `json:"payment"`
+	PaymentAuthCode   string `json:"payment_auth_code"`
+	PaymentCardType   string `json:"payment_card_type"`
+	PaymentMethodCode string `json:"payment_method_code"`
 	PaymentMethodName string `json:"payment_method_name"`
+	PickUpCutOffTime  int64  `json:"pick_up_cut_off_time"`
 	RecipientAddress  struct {
 		AddressDetail       string `json:"address_detail"`
 		AddressLine1        string `json:"address_line1"`
@@ -124,8 +156,165 @@ type Order struct {
 		Name                 string `json:"name"`
 		PhoneNumber          string `json:"phone_number"`
 		PostalCode           string `json:"postal_code"`
+		PostTown             string `json:"post_town"`
 		RegionCode           string `json:"region_code"`
 	} `json:"recipient_address"`
+	RecommendedShippingTime int64  `json:"recommended_shipping_time"`
+	ReleaseDate             int64  `json:"release_date"`
+	ReplacedOrderId         string `json:"replaced_order_id"`
+	RequestCancelTime       int64  `json:"request_cancel_time"`
+	RtsSlaTime              int64  `json:"rts_sla_time"`
+	RtsTime                 int64  `json:"rts_time"`
+	SellerNote              string `json:"seller_note"`
+	ShippingDueTime         int64  `json:"shipping_due_time"`
+	ShippingProvider        string `json:"shipping_provider"`
+	ShippingProviderId      string `json:"shipping_provider_id"`
+	ShippingType            string `json:"shipping_type"`
+	SplitOrCombineTag       string `json:"split_or_combine_tag"`
+	Status                  string `json:"status"`
+	TrackingNumber          string `json:"tracking_number"`
+	TtsSlaTime              int64  `json:"tts_sla_time"`
+	UpdateTime              int64  `json:"update_time"`
+	UserId                  string `json:"user_id"`
+	WarehouseId             string `json:"warehouse_id"`
+}
+
+type OrderV202507 struct {
+	Id                              string `json:"id"`
+	AutoCombineGroupId              string `json:"auto_combine_group_id"`
+	BuyerEmail                      string `json:"buyer_email"`
+	BuyerMessage                    string `json:"buyer_message"`
+	CancelOrderSlaTime              int64  `json:"cancel_order_sla_time"`
+	CancelReason                    string `json:"cancel_reason"`
+	CancelTime                      int64  `json:"cancel_time"`
+	CancellationInitiator           string `json:"cancellation_initiator"`
+	ChannelEntityNationalRegistryId string `json:"channel_entity_national_registry_id"`
+	CollectionDueTime               int64  `json:"collection_due_time"`
+	CollectionTime                  int64  `json:"collection_time"`
+	CombinedListingSkus             []struct {
+		SkuId     string `json:"sku_id"`
+		SkuCount  int    `json:"sku_count"`
+		ProductId string `json:"product_id"`
+		SellerSku string `json:"seller_sku"`
+	} `json:"combined_listing_skus"`
+	CommercePlatform                   string `json:"commerce_platform"`
+	ConsultationId                     string `json:"consultation_id"`
+	Cpf                                string `json:"cpf"`
+	CpfName                            string `json:"cpf_name"`
+	CreateTime                         int64  `json:"create_time"`
+	DeliveryDueTime                    int64  `json:"delivery_due_time"`
+	DeliveryOptionId                   string `json:"delivery_option_id"`
+	DeliveryOptionName                 string `json:"delivery_option_name"`
+	DeliveryOptionRequiredDeliveryTime int64  `json:"delivery_option_required_delivery_time"`
+	DeliverySlaTime                    int64  `json:"delivery_sla_time"`
+	DeliveryTime                       int64  `json:"delivery_time"`
+	DeliveryType                       int64  `json:"delivery_type"`
+	ExchangeSourceOrderId              int64  `json:"exchange_source_order_id"`
+	FastDeliveryProgram                string `json:"fast_delivery_program"`
+	FastDispatchSlaTime                int64  `json:"fast_dispatch_sla_time"`
+	FulfillmentType                    string `json:"fulfillment_type"`
+	HasUpdatedRecipientAddress         bool   `json:"has_updated_recipient_address"`
+	HandlingDuration                   struct {
+		Days string `json:"days"`
+		Type string `json:"type"`
+	} `json:"handling_duration"`
+	IsBuyerRequestCancel bool `json:"is_buyer_request_cancel"`
+	IsCod                bool `json:"is_cod"`
+	IsExchangeOrder      bool `json:"is_exchange_order"`
+	IsOnHoldOrder        bool `json:"is_on_hold_order"`
+	IsReplacementOrder   bool `json:"is_replacement_order"`
+	IsSampleOrder        bool `json:"is_sample_order"`
+	LineItems            []struct {
+		Id            string `json:"id"`
+		CancelReason  string `json:"cancel_reason"`
+		CancelUser    string `json:"cancel_user"`
+		Currency      string `json:"currency"`
+		DisplayStatus string `json:"display_status"`
+		IsGift        bool   `json:"is_gift"`
+		ItemTax       []struct {
+			TaxAmount string `json:"tax_amount"`
+			TaxRate   string `json:"tax_rate"`
+			TaxType   string `json:"tax_type"`
+		} `json:"item_tax"`
+		OriginalPrice        string `json:"original_price"`
+		PackageId            string `json:"package_id"`
+		PackageStatus        string `json:"package_status"`
+		PlatformDiscount     string `json:"platform_discount"`
+		ProductId            string `json:"product_id"`
+		ProductName          string `json:"product_name"`
+		RetailDeliveryFee    string `json:"retail_delivery_fee"`
+		RtsTime              int64  `json:"rts_time"`
+		SalePrice            string `json:"sale_price"`
+		SellerDiscount       string `json:"seller_discount"`
+		SellerSku            string `json:"seller_sku"`
+		ShippingProviderId   string `json:"shipping_provider_id"`
+		ShippingProviderName string `json:"shipping_provider_name"`
+		SkuId                string `json:"sku_id"`
+		SkuImage             string `json:"sku_image"`
+		SkuName              string `json:"sku_name"`
+		SkuType              string `json:"sku_type"`
+		SmallOrderFee        string `json:"small_order_fee"`
+		TrackingNumber       string `json:"tracking_number"`
+	} `json:"line_items"`
+	NeedUploadInvoice string `json:"need_upload_invoice"`
+	OrderType         string `json:"order_type"`
+	Packages          []struct {
+		Id string `json:"id"`
+	} `json:"packages"`
+	PaidTime int64 `json:"paid_time"`
+	Payment  struct {
+		Currency                    string `json:"currency"`
+		BuyerServiceFee             string `json:"buyer_service_fee"`
+		HandlingFee                 string `json:"handling_fee"`
+		ItemInsuranceFee            string `json:"item_insurance_fee"`
+		OriginalShippingFee         string `json:"original_shipping_fee"`
+		OriginalTotalProductPrice   string `json:"original_total_product_price"`
+		PlatformDiscount            string `json:"platform_discount"`
+		ProductTax                  string `json:"product_tax"`
+		RetailDeliveryFee           string `json:"retail_delivery_fee"`
+		SellerDiscount              string `json:"seller_discount"`
+		ShippingFee                 string `json:"shipping_fee"`
+		ShippingFeeCofundedDiscount string `json:"shipping_fee_cofunded_discount"`
+		ShippingFeePlatformDiscount string `json:"shipping_fee_platform_discount"`
+		ShippingFeeSellerDiscount   string `json:"shipping_fee_seller_discount"`
+		ShippingFeeTax              string `json:"shipping_fee_tax"`
+		ShippingInsuranceFee        string `json:"shipping_insurance_fee"`
+		SmallOrderFee               string `json:"small_order_fee"`
+		SubTotal                    string `json:"sub_total"`
+		Tax                         string `json:"tax"`
+		TotalAmount                 string `json:"total_amount"`
+	} `json:"payment"`
+	PaymentAuthCode   string `json:"payment_auth_code"`
+	PaymentCardType   string `json:"payment_card_type"`
+	PaymentMethodCode string `json:"payment_method_code"`
+	PaymentMethodName string `json:"payment_method_name"`
+	PickUpCutOffTime  int64  `json:"pick_up_cut_off_time"`
+	RecipientAddress  struct {
+		AddressDetail       string `json:"address_detail"`
+		AddressLine1        string `json:"address_line1"`
+		AddressLine2        string `json:"address_line2"`
+		AddressLine3        string `json:"address_line3"`
+		AddressLine4        string `json:"address_line4"`
+		DeliveryPreferences struct {
+			DropOffLocation string `json:"drop_off_location"`
+		} `json:"delivery_preferences"`
+		DistrictInfo []struct {
+			AddressLevel     string `json:"address_level"`
+			AddressLevelName string `json:"address_level_name"`
+			AddressName      string `json:"address_name"`
+		} `json:"district_info"`
+		FirstName            string `json:"first_name"`
+		FirstNameLocalScript string `json:"first_name_local_script"`
+		FullAddress          string `json:"full_address"`
+		LastName             string `json:"last_name"`
+		LastNameLocalScript  string `json:"last_name_local_script"`
+		Name                 string `json:"name"`
+		PhoneNumber          string `json:"phone_number"`
+		PostalCode           string `json:"postal_code"`
+		PostTown             string `json:"post_town"`
+		RegionCode           string `json:"region_code"`
+	} `json:"recipient_address"`
+	ReleaseDate        int64  `json:"release_date"`
 	ReplacedOrderId    string `json:"replaced_order_id"`
 	RequestCancelTime  int64  `json:"request_cancel_time"`
 	RtsSlaTime         int64  `json:"rts_sla_time"`

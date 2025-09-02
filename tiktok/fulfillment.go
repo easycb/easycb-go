@@ -235,3 +235,25 @@ func (c *Client) UpdatePackageDeliveryStatus(query easycb.AnyMap, body easycb.An
 
 	return &result, nil
 }
+
+func (c *Client) UploadInvoice(query easycb.AnyMap, body easycb.AnyMap) (*UploadInvoiceRsp, error) {
+	var result UploadInvoiceRsp
+	path := "/fulfillment/202502/invoice/upload"
+	err := c.doRequest("POST", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) TTSTrackingValidation(query easycb.AnyMap) (*TTSTrackingValidationRsp, error) {
+	var result TTSTrackingValidationRsp
+	path := "/fulfillment/202508/tts_tracking_validation"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}

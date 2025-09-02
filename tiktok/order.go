@@ -27,6 +27,17 @@ func (c *Client) GetOrderDetail(query easycb.AnyMap) (*GetOrderDetailRsp, error)
 	return &result, nil
 }
 
+func (c *Client) GetOrderDetailV202507(query easycb.AnyMap) (*GetOrderDetailV202507Rsp, error) {
+	var result GetOrderDetailV202507Rsp
+	path := "/order/202507/orders"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 func (c *Client) GetPriceDetail(orderId string, query easycb.AnyMap) (*GetPriceDetailRsp, error) {
 	var result GetPriceDetailRsp
 	path := fmt.Sprintf("/order/202407/orders/%s/price_detail", orderId)

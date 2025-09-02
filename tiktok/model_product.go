@@ -1091,3 +1091,43 @@ type DiagnoseAndOptimizeProductRsp struct {
 		} `json:"listing_quality"`
 	} `json:"data"`
 }
+
+type GetGlobalListingRulesRsp struct {
+	BaseRsp
+	Data struct {
+		ListingMethods []string `json:"listing_methods"`
+		InventoryRules []struct {
+			LocalWarehouseId     string `json:"local_warehouse_id"`
+			AllocationMode       string `json:"allocation_mode"`
+			AssociatedWarehouses []struct {
+				WarehouseId string `json:"warehouse_id"`
+				Region      string `json:"region"`
+			} `json:"associated_warehouses"`
+		} `json:"inventory_rules"`
+	} `json:"data"`
+}
+
+type ReplicateProductRsp struct {
+	BaseRsp
+	Data struct {
+		Errors []struct {
+			Code    int    `json:"code"`
+			Message string `json:"message"`
+			Detail  struct {
+				Region string `json:"region"`
+			} `json:"detail"`
+		} `json:"errors"`
+	} `json:"data"`
+}
+
+type GetGlobalReplicatedProductsRsp struct {
+	BaseRsp
+	Data struct {
+		ReplicatedProducts []struct {
+			Region        string `json:"region"`
+			ShopId        string `json:"shop_id"`
+			ProductId     string `json:"product_id"`
+			ProductStatus string `json:"product_status"`
+		} `json:"replicated_products"`
+	} `json:"data"`
+}

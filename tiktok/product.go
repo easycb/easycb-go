@@ -554,3 +554,36 @@ func (c *Client) DiagnoseAndOptimizeProduct(query easycb.AnyMap, body easycb.Any
 
 	return &result, nil
 }
+
+func (c *Client) GetGlobalListingRules(query easycb.AnyMap) (*GetGlobalListingRulesRsp, error) {
+	var result GetGlobalListingRulesRsp
+	path := "/product/202507/global_listing_rules"
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) ReplicateProduct(productId string, query easycb.AnyMap, body easycb.AnyMap) (*ReplicateProductRsp, error) {
+	var result ReplicateProductRsp
+	path := fmt.Sprintf("/product/202507/products/%s/global_replicate", productId)
+	err := c.doRequest("GET", path, query, body, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
+func (c *Client) GetGlobalReplicatedProducts(productId string, query easycb.AnyMap) (*GetGlobalReplicatedProductsRsp, error) {
+	var result GetGlobalReplicatedProductsRsp
+	path := fmt.Sprintf("/product/202507/products/%s/replicated_products", productId)
+	err := c.doRequest("GET", path, query, nil, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
