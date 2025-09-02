@@ -334,85 +334,53 @@ type AddItemRsp struct {
 
 type UpdateItemRsp struct {
 	BaseRsp
-	Description string  `json:"description"`
-	Weight      float64 `json:"weight"`
-	PreOrder    struct {
-		DaysToShip int  `json:"days_to_ship"`
-		IsPreOrder bool `json:"is_pre_order"`
-	} `json:"pre_order"`
-	ItemName      string `json:"item_name"`
-	AttributeList []struct {
-		AttributeId        int `json:"attribute_id"`
-		AttributeValueList []struct {
-			ValueId           int    `json:"value_id"`
-			OriginalValueName string `json:"original_value_name"`
-			ValueUnit         string `json:"value_unit"`
-		} `json:"attribute_value_list"`
-	} `json:"attribute_list"`
-	Image struct {
-		ImageIdList []struct {
-		} `json:"image_id_list"`
-	} `json:"image"`
-	ItemSku      string `json:"item_sku"`
-	ItemStatus   string `json:"item_status"`
-	LogisticInfo []struct {
-		SizeId      int     `json:"size_id"`
-		ShippingFee float64 `json:"shipping_fee"`
-		Enabled     bool    `json:"enabled"`
-		LogisticId  int     `json:"logistic_id"`
-		IsFree      bool    `json:"is_free"`
-	} `json:"logistic_info"`
-	Wholesale []struct {
-		MinCount  int     `json:"min_count"`
-		UnitPrice float64 `json:"unit_price"`
-		MaxCount  int     `json:"max_count"`
-	} `json:"wholesale"`
-	ItemId     int64 `json:"item_id"`
-	CategoryId int   `json:"category_id"`
-	Dimension  struct {
-		PackageHeight int `json:"package_height"`
-		PackageLength int `json:"package_length"`
-		PackageWidth  int `json:"package_width"`
-	} `json:"dimension"`
-	Condition     string `json:"condition"`
-	VideoUploadId []struct {
-	} `json:"video_upload_id"`
-	Brand struct {
-		BrandId           int    `json:"brand_id"`
-		OriginalBrandName string `json:"original_brand_name"`
-	} `json:"brand"`
-	ItemDangerous int `json:"item_dangerous"`
-	TaxInfo       struct {
-		Ncm           string `json:"ncm"`
-		SameStateCfop string `json:"same_state_cfop"`
-		DiffStateCfop string `json:"diff_state_cfop"`
-		Csosn         string `json:"csosn"`
-		Origin        string `json:"origin"`
-		Cest          string `json:"cest"`
-		MeasureUnit   string `json:"measure_unit"`
-		InvoiceOption string `json:"invoice_option"`
-		VatRate       string `json:"vat_rate"`
-		HsCode        string `json:"hs_code"`
-		TaxCode       string `json:"tax_code"`
-	} `json:"tax_info"`
-	ComplaintPolicy struct {
-		WarrantyTime                string `json:"warranty_time"`
-		ExcludeEntrepreneurWarranty bool   `json:"exclude_entrepreneur_warranty"`
-		ComplaintAddressId          int    `json:"complaint_address_id"`
-		AdditionalInformation       string `json:"additional_information"`
-	} `json:"complaint_policy"`
-	DescriptionInfo struct {
-		ExtendedDescription struct {
-			FieldList []struct {
-				FieldType string `json:"field_type"`
-				Text      string `json:"text"`
-				ImageInfo struct {
-					ImageId string `json:"image_id"`
-				} `json:"image_info"`
-			} `json:"field_list"`
-		} `json:"extended_description"`
-	} `json:"description_info"`
-	DescriptionType string `json:"description_type"`
+	DebugMessage string `json:"debug_message"`
+	Error        string `json:"error"`
+	Response     *struct {
+		ItemId      int64  `json:"item_id"`
+		CategoryId  int    `json:"category_id"`
+		ItemName    string `json:"item_name"`
+		Description string `json:"description"`
+		ItemSku     string `json:"item_sku"`
+		Attribute   []struct {
+			AttributeId        int `json:"attribute_id"`
+			AttributeValueList []struct {
+				ValueId int `json:"value_id"`
+			} `json:"attribute_value_list"`
+		} `json:"attribute"`
+		Images struct {
+			ImageIdList  []string `json:"image_id_list"`
+			ImageUrlList []string `json:"image_url_list"`
+			ImageRatio   string   `json:"image_ratio"`
+		} `json:"images"`
+		Weight    float64 `json:"weight"`
+		Dimension struct {
+			PackageLength int `json:"package_length"`
+			PackageWidth  int `json:"package_width"`
+			PackageHeight int `json:"package_height"`
+		} `json:"dimension"`
+		LogisticInfo []struct {
+			LogisticId   int    `json:"logistic_id"`
+			LogisticName string `json:"logistic_name"`
+			Enabled      bool   `json:"enabled"`
+			ShippingFee  int    `json:"shipping_fee"`
+			SizeId       int    `json:"size_id"`
+			IsFree       bool   `json:"is_free"`
+		} `json:"logistic_info"`
+		PreOrder struct {
+			IsPreOrder bool `json:"is_pre_order"`
+			DaysToShip int  `json:"days_to_ship"`
+		} `json:"pre_order"`
+		Condition  string `json:"condition"`
+		ItemStatus string `json:"item_status"`
+		Brand      struct {
+			BrandId int `json:"brand_id"`
+		} `json:"brand"`
+		DescriptionType string `json:"description_type"`
+		SizeChartInfo   struct {
+			SizeChartId int `json:"size_chart_id"`
+		} `json:"size_chart_info"`
+	} `json:"response,omitempty"`
 }
 
 type DeleteItemRsp struct {

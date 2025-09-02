@@ -41,12 +41,12 @@ type GetDiscountRsp struct {
 			ItemPromotionPrice float64 `json:"item_promotion_price"`
 			ItemName           string  `json:"item_name"`
 			ModelList          []struct {
-				ModelId             int64  `json:"model_id"`
-				ModelPromotionPrice int    `json:"model_promotion_price"`
-				ModelOriginalPrice  int    `json:"model_original_price"`
-				ModelNormalStock    int    `json:"model_normal_stock"`
-				ModelName           string `json:"model_name"`
-				ModelPromotionStock int    `json:"model_promotion_stock"`
+				ModelId             int64   `json:"model_id"`
+				ModelPromotionPrice float64 `json:"model_promotion_price"`
+				ModelOriginalPrice  float64 `json:"model_original_price"`
+				ModelNormalStock    int     `json:"model_normal_stock"`
+				ModelName           string  `json:"model_name"`
+				ModelPromotionStock int     `json:"model_promotion_stock"`
 			} `json:"model_list"`
 			ItemPromotionStock int     `json:"item_promotion_stock"`
 			NormalStock        int     `json:"normal_stock"`

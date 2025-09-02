@@ -333,6 +333,9 @@ type GetPublishableShopRsp struct {
 type GetPublishTaskResultRsp struct {
 	BaseRsp
 	Response struct {
+		Failed struct {
+			FailedReason string `json:"failed_reason"`
+		} `json:"failed"`
 		PublishStatus string `json:"publish_status"`
 		Success       struct {
 			Region string `json:"region"`
