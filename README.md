@@ -4,9 +4,9 @@ English | [简体中文](./README_CN.md)
 
 Lazada/Tiktok/Shopee/Shein Seller Open Platform SDK For Golang
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/easycb/easycb-go)](https://goreportcard.com/report/github.com/easycb/easycb-go)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/easycb/easycb-go)
-[![go report card](https://goreportcard.com/badge/github.com/easycb/easycb-go "go report card")](https://goreportcard.com/report/github.com/easycb/easycb-go)
 
 
 ## Overview

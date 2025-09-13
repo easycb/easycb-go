@@ -4,9 +4,9 @@
 
 Lazada/TikTok/Shopee/Shein卖家开放平台Golang SDK
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/easycb/easycb-go)](https://goreportcard.com/report/github.com/easycb/easycb-go)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/easycb/easycb-go)
-[![go report card](https://goreportcard.com/badge/github.com/easycb/easycb-go "go report card")](https://goreportcard.com/report/github.com/easycb/easycb-go)
 
 ## 概述
 
