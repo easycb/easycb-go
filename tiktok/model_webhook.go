@@ -67,7 +67,7 @@ type WebhookNewMessageData struct {
 	} `json:"sender"`
 }
 
-// Fullfilled by TikTok
+// Fulfilled by TikTok
 
 type WebhookGoodsMatch struct {
 	BaseWebhook
@@ -317,13 +317,13 @@ type WebhookReturnStatusChangeData struct {
 
 // Seller
 
-type WebhookSellerDeauthorization struct {
+type WebhookSellerDeAuthorization struct {
 	BaseWebhook
 	ShopId string                           `json:"shop_id"`
-	Data   WebhookSellerDeauthorizationData `json:"data"`
+	Data   WebhookSellerDeAuthorizationData `json:"data"`
 }
 
-type WebhookSellerDeauthorizationData struct {
+type WebhookSellerDeAuthorizationData struct {
 	Message string `json:"message"`
 }
 

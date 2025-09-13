@@ -169,7 +169,7 @@ type GetPackageHandoverTimeSlotsRsp struct {
 		CanVanCollection bool   `json:"can_van_collection"`
 		DropOffPointUrl  string `json:"drop_off_point_url"`
 		PickupSlots      []struct {
-			Avaliable bool  `json:"avaliable"`
+			Available bool  `json:"avaliable"`
 			EndTime   int64 `json:"end_time"`
 			StartTime int64 `json:"start_time"`
 		} `json:"pickup_slots"`

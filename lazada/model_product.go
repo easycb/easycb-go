@@ -308,113 +308,16 @@ type GetProductsRsp struct {
 	Data struct {
 		TotalProducts int `json:"total_products"`
 		Products      []struct {
-			CreatedTime string   `json:"created_time"`
-			UpdatedTime string   `json:"updated_time"`
-			Images      []string `json:"images"`
-			Skus        []struct {
-				SellerSku                 string                 `json:"SellerSku"`
-				ShopSku                   string                 `json:"ShopSku"`
-				Url                       string                 `json:"Url"`
-				ColorFamily               string                 `json:"color_family,omitempty"`
-				PackageHeight             string                 `json:"package_height"`
-				FblWarehouseInventories   []interface{}          `json:"fblWarehouseInventories"`
-				Price                     float64                `json:"price"`
-				PackageLength             string                 `json:"package_length"`
-				SpecialFromDate           string                 `json:"special_from_date,omitempty"`
-				Available                 int                    `json:"Available"`
-				SpecialToDate             string                 `json:"special_to_date,omitempty"`
-				Status                    string                 `json:"Status"`
-				Quantity                  int                    `json:"quantity"`
-				Images                    []string               `json:"Images"`
-				SpecialTimeFormat         string                 `json:"special_time_format,omitempty"`
-				SaleProp                  map[string]interface{} `json:"saleProp"`
-				MultiWarehouseInventories []struct {
-					OccupyQuantity   int    `json:"occupyQuantity"`
-					Quantity         int    `json:"quantity"`
-					TotalQuantity    int    `json:"totalQuantity"`
-					WithholdQuantity int    `json:"withholdQuantity"`
-					WarehouseCode    string `json:"warehouseCode"`
-					SellableQuantity int    `json:"sellableQuantity"`
-				} `json:"multiWarehouseInventories"`
-				PackageWidth       string        `json:"package_width"`
-				SpecialToTime      string        `json:"special_to_time,omitempty"`
-				SpecialFromTime    string        `json:"special_from_time,omitempty"`
-				Size               string        `json:"size,omitempty"`
-				SpecialPrice       float64       `json:"special_price"`
-				ChannelInventories []interface{} `json:"channelInventories"`
-				PackageWeight      string        `json:"package_weight"`
-				SkuId              int64         `json:"SkuId"`
-				Size1              string        `json:"Size,omitempty"`
-				Color              string        `json:"Color,omitempty"`
-				ColorClassifi      string        `json:"color classifi,omitempty"`
-				ReferenceClas      string        `json:"Reference clas,omitempty"`
-				Material           string        `json:"Material,omitempty"`
-				Model              string        `json:"Model,omitempty"`
-				Variation2Shoe     string        `json:"Variation2Shoe,omitempty"`
-				ColorClassifi1     string        `json:"Color Classifi,omitempty"`
-				ChickenDrinker     string        `json:"ChickenDrinker,omitempty"`
-				Combo              string        `json:"combo,omitempty"`
-				ColorClassifi2     string        `json:"Color classifi,omitempty"`
-				Color1             string        `json:"color,omitempty"`
-				Rozmiar            string        `json:"Rozmiar,omitempty"`
-				Kolor              string        `json:"Kolor,omitempty"`
-				SortByColor        string        `json:"sort by color,omitempty"`
-				Ukuran             string        `json:"Ukuran,omitempty"`
-				Colour             string        `json:"Colour,omitempty"`
-				Length             string        `json:"length,omitempty"`
-				Warna              string        `json:"Warna,omitempty"`
-			} `json:"skus"`
-			ItemId          int64         `json:"item_id"`
-			TrialProduct    bool          `json:"trialProduct"`
-			PrimaryCategory int           `json:"primary_category"`
-			MarketImages    []interface{} `json:"marketImages"`
-			Attributes      struct {
-				Description                    string `json:"description"`
-				SkirtLength                    string `json:"skirt_length,omitempty"`
-				SkirtStyle                     string `json:"skirt_style,omitempty"`
-				ClothingMaterial               string `json:"clothing_material,omitempty"`
-				WarrantyType                   string `json:"warranty_type"`
-				DescriptionMs                  string `json:"description_ms,omitempty"`
-				NameMs                         string `json:"name_ms,omitempty"`
-				Name                           string `json:"name"`
-				Source                         string `json:"source"`
-				Brand                          string `json:"brand,omitempty"`
-				DressLength                    string `json:"dress_length,omitempty"`
-				FaPattern                      string `json:"fa_pattern,omitempty"`
-				DressShape                     string `json:"dress_shape,omitempty"`
-				HairAccessories                string `json:"hair_accessories,omitempty"`
-				RecommendedGender              string `json:"recommended_gender,omitempty"`
-				RecommendedAge                 string `json:"recommended_age,omitempty"`
-				MaterialType                   string `json:"material_type,omitempty"`
-				CollarType                     string `json:"collar_type,omitempty"`
-				Sleeves                        string `json:"sleeves,omitempty"`
-				TypeOfFasteningGluingSoldering string `json:"Type_Of_Fastening,_Gluing_&_Soldering,omitempty"`
-				SockTightStyle                 string `json:"sock_tight_style,omitempty"`
-				BrandCompatibility             string `json:"brand_compatibility,omitempty"`
-				CaseFunction                   string `json:"case_function,omitempty"`
-				HatsStyle                      string `json:"hats_style,omitempty"`
-				SportsMaterial                 string `json:"Sports_Material,omitempty"`
-				MTopNeckline                   string `json:"m_top_neckline,omitempty"`
-				BodyJewellery                  string `json:"body_jewellery,omitempty"`
-				PetSuppliesMaterial            string `json:"Pet_Supplies_Material,omitempty"`
-				GlasswareMaterial              string `json:"glassware_material,omitempty"`
-				Language                       string `json:"language,omitempty"`
-				IsbnIssn                       string `json:"isbn_issn,omitempty"`
-				ShoeAccessoryType              string `json:"shoe_accessory_type,omitempty"`
-				CookwareMaterial               string `json:"cookware_material,omitempty"`
-				Material                       string `json:"material,omitempty"`
-				TopsType                       string `json:"tops_type,omitempty"`
-				WBlouseSleevestyle             string `json:"w_blouse_sleevestyle,omitempty"`
-				SleepLoungeStyles              string `json:"sleep_lounge_styles,omitempty"`
-				FishingType                    string `json:"fishing_type,omitempty"`
-				TopDiameter                    string `json:"Top_Diameter,omitempty"`
-				LengthM                        string `json:"Length_(m),omitempty"`
-				TypeOfElectricalCircuitParts   string `json:"Type_Of_Electrical_Circuit_Parts,omitempty"`
-				TypeTools                      string `json:"type_tools,omitempty"`
-				SkinType                       string `json:"skin_type,omitempty"`
-				SkinConcern                    string `json:"skin_concern,omitempty"`
-			} `json:"attributes"`
-			Status string `json:"status"`
+			CreatedTime     string                   `json:"created_time"`
+			UpdatedTime     string                   `json:"updated_time"`
+			Images          []string                 `json:"images"`
+			Skus            []map[string]interface{} `json:"skus"`
+			ItemId          int64                    `json:"item_id"`
+			TrialProduct    bool                     `json:"trialProduct"`
+			PrimaryCategory int                      `json:"primary_category"`
+			MarketImages    []interface{}            `json:"marketImages"`
+			Attributes      map[string]interface{}   `json:"attributes"`
+			Status          string                   `json:"status"`
 		} `json:"products"`
 	} `json:"data"`
 	Code      string `json:"code"`

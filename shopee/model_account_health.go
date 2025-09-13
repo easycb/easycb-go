@@ -15,7 +15,7 @@ type ShopPenaltyRsp struct {
 			PunishmentTier int    `json:"punishment_tier"`
 			DaysLeft       int    `json:"days_left"`
 		} `json:"ongoing_punishment"`
-	} `json:"responce"`
+	} `json:"response"`
 }
 
 type GetShopPerformanceRsp struct {
