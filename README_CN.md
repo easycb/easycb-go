@@ -213,6 +213,11 @@ func main() {
 
 [感谢](https://github.com/easycb/easycb-go/graphs/contributors) 对EasyCb贡献!
 
+## 联系我们
+- 飞书用户群（[注册飞书](https://www.feishu.cn/)后扫码进群）
+
+&ensp;&ensp;&ensp; <img src=".github/static/lark_group.jpg" alt="LarkGroup" width="200"/>
+
 ## 许可
 
 协议 [MIT License](https://github.com/easycb/easycb-go/blob/master/LICENSE)
