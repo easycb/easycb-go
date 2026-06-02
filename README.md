@@ -216,7 +216,7 @@ func main() {
 [Thank you](https://github.com/easycb/easycb-go/graphs/contributors) for contributing to the EasyCb SDK!
 
 ## Contact US
-- Lark: Scan the QR code below with [Register Feishu](https://www.feishu.cn/en/) to join our CloudWeGo/eino user group.
+- Lark: Scan the QR code below with [Register Feishu](https://www.feishu.cn/en/) to join our EasyCB user group.
 
 &ensp;&ensp;&ensp; <img src=".github/static/lark_group.jpg" alt="LarkGroup" width="200"/>
 
