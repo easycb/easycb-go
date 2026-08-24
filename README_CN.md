@@ -2,7 +2,7 @@
 
 # Easy Cross Border (EasyCb-Go)
 
-Lazada/TikTok/Shopee/Shein卖家开放平台Golang SDK
+Lazada/TikTok/Shopee/Shein/Ozon卖家开放平台Golang SDK
 
 [![go report card](https://goreportcard.com/badge/github.com/easycb/easycb-go "go report card")](https://goreportcard.com/report/github.com/easycb/easycb-go)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
@@ -14,10 +14,13 @@ Lazada/TikTok/Shopee/Shein卖家开放平台Golang SDK
 * 支持 [Tiktok 合作伙伴](https://partner.tiktokshop.com/api/document) `V2`
 * 支持 [Shopee 卖家开放平台](https://open.shopee.com/documents) `V2`
 * 支持 [Shein 开放平台](https://open.sheincorp.com)
+* 支持 [Ozon Seller Api](https://docs.ozon.ru/api/seller)
 * 每个功能都附带测试
 * 对开发者友好
 
 **EasyCb 未来将支持以下平台:**
+- MercadoLibre
+- Temu
 - Shopify
 - Amazon
 - AliExpress
@@ -208,15 +211,61 @@ func main() {
 }
 ```
 
+Ozon 基础使用示例:
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+	"github.com/easycb/easycb-go"
+	"github.com/easycb/easycb-go/ozon"
+)
+
+func main() {
+	baseUrl := "https://api-seller.ozon.ru"
+	clientId := ""
+	apiKey := ""
+	client, err := ozon.NewClient(clientId, apiKey, baseUrl)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	
+	body := easycb.AnyMap{
+		"with": easycb.AnyMap{
+			"analytics_data": true,
+			"barcodes":       true,
+			"financial_data": true,
+			"legal_info":     true,
+			"translit":       true,
+		},
+		"sort_dir": "DESC",
+		"limit":    100,
+		"filter": easycb.AnyMap{
+			"since": time.Now().UTC().Add(-15 * 24 * time.Hour).Format("2006-01-02T15:04:05Z"),
+			"to":    time.Now().UTC().Format("2006-01-02T15:04:05Z"),
+		},
+	}
+
+	res, err := client.PostingFbsList(body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(res)
+}
+```
 
 ## 贡献者
 
 [感谢](https://github.com/easycb/easycb-go/graphs/contributors) 对EasyCb贡献!
 
 ## 联系我们
-- 飞书用户群（[注册飞书](https://www.feishu.cn/)后扫码进群）
+- 飞书（[注册飞书](https://www.feishu.cn/)扫码添加联系）
 
-&ensp;&ensp;&ensp; <img src=".github/static/lark_group.jpg" alt="LarkGroup" width="200"/>
+&ensp;&ensp;&ensp; <img src=".github/static/qr_code.jpg" alt="LarkGroup" width="200"/>
 
 ## 许可
 

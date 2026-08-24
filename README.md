@@ -2,7 +2,7 @@ English | [简体中文](./README_CN.md)
 
 # Easy Cross Border (EasyCb-Go)
 
-Lazada/Tiktok/Shopee/Shein Seller Open Platform SDK For Golang
+Lazada/Tiktok/Shopee/Shein/Ozon Seller Open Platform SDK For Golang
 
 [![go report card](https://goreportcard.com/badge/github.com/easycb/easycb-go "go report card")](https://goreportcard.com/report/github.com/easycb/easycb-go)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
@@ -15,10 +15,13 @@ Lazada/Tiktok/Shopee/Shein Seller Open Platform SDK For Golang
 * Support [Tiktok Shope Partner Api](https://partner.tiktokshop.com/api/document) `V2`
 * Support [Shopee Open Api](https://open.shopee.com/documents) `V2`
 * Support [Shein Open Api](https://open.sheincorp.com)
+* Support [Ozon Seller Api](https://docs.ozon.ru/api/seller)
 * Every feature comes with tests
 * Developer Friendly
 
 **EasyCb features are support platform:**
+- MercadoLibre
+- Temu
 - Shopify
 - Amazon
 - AliExpress
@@ -211,14 +214,61 @@ func main() {
 }
 ```
 
+A basic example Ozon seller api:
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+	"github.com/easycb/easycb-go"
+	"github.com/easycb/easycb-go/ozon"
+)
+
+func main() {
+	baseUrl := "https://api-seller.ozon.ru"
+	clientId := ""
+	apiKey := ""
+	client, err := ozon.NewClient(clientId, apiKey, baseUrl)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	
+	body := easycb.AnyMap{
+		"with": easycb.AnyMap{
+			"analytics_data": true,
+			"barcodes":       true,
+			"financial_data": true,
+			"legal_info":     true,
+			"translit":       true,
+		},
+		"sort_dir": "DESC",
+		"limit":    100,
+		"filter": easycb.AnyMap{
+			"since": time.Now().UTC().Add(-15 * 24 * time.Hour).Format("2006-01-02T15:04:05Z"),
+			"to":    time.Now().UTC().Format("2006-01-02T15:04:05Z"),
+		},
+	}
+
+	res, err := client.PostingFbsList(body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(res)
+}
+```
+
 ## Contributors
 
 [Thank you](https://github.com/easycb/easycb-go/graphs/contributors) for contributing to the EasyCb SDK!
 
 ## Contact US
-- Lark: Scan the QR code below with [Register Feishu](https://www.feishu.cn/en/) to join our EasyCB user group.
+- Scan the QR code below with [Register Feishu](https://www.feishu.cn/en/) to add me to your Contacts.
 
-&ensp;&ensp;&ensp; <img src=".github/static/lark_group.jpg" alt="LarkGroup" width="200"/>
+&ensp;&ensp;&ensp; <img src=".github/static/qr_code.jpg" alt="LarkGroup" width="200"/>
 
 ## License
 

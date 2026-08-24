@@ -1,4 +1,4 @@
-package lazada
+package shein
 
 import (
 	"github.com/easycb/easycb-go/shein"
